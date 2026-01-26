@@ -1,11 +1,16 @@
-import 'package:booking_system/patayaBearchHouseApp.dart';
+import 'package:booking_system/future_hostel_landing.dart';
+import 'package:booking_system/pataya_bearch_house_app.dart';
+import 'package:booking_system/stay_strays_hostel_landing.dart';
 import 'package:flutter/material.dart';
 
 // void main() {
 //   runApp(const MyApp());
 // }
 void main() {
-  runApp(const PattayaBeachHouseApp());
+  // runApp(const PattayaBeachHouseApp());
+  // runApp(const FutureHostelApp(),);
+  // runApp(const StaysStraysHostelApp(),);
+  runApp(const MyApp(),);
 }
 
 class MyApp extends StatelessWidget {
@@ -16,9 +21,73 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Booking System',
       theme: ThemeData(
+        useMaterial3: false,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'Home Page'),
+
+      // home: const MyHomePage(title: 'Home Page'),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const HomePage(),
+        // '/home': (context) => const MyHomePage(title: 'Home Page'),
+        '/pattayabeachHouse': (context) => const PattayaBeachHouseApp(),
+        '/futurehostel': (context) => const FutureHostelApp(),
+        '/staystrayshostel': (context) => const StayStraysHostelApp(),
+      },
+    );
+  }
+}
+
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  shape: WidgetStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))), 
+                ),
+                child: SizedBox(
+                  width: 150,
+                  child: const Text('Pattaya Beach House')),
+                onPressed: () => Navigator.pushNamed(context, '/pattayabeachHouse'),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  shape: WidgetStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))), 
+                ),
+                child: SizedBox(
+                  width: 150,
+                  child: const Text('Future Hostel')),
+                onPressed: () => Navigator.pushNamed(context, '/futurehostel'),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  shape: WidgetStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))), 
+                ),
+                child: SizedBox(
+                  width: 150,
+                  child: const Text('Stay Strays Hostel')),
+                onPressed: () => Navigator.pushNamed(context, '/staystrayshostel'),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
