@@ -1,7 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'dart:ui';
-
+import 'package:url_launcher/url_launcher.dart';
 
 class StayStraysHostelApp extends StatelessWidget {
   const StayStraysHostelApp({Key? key}) : super(key: key);
@@ -68,6 +69,25 @@ class Translations {
       'view_all': 'View All',
       'languages': 'Languages Spoken',
       'lang_staff': 'English, Thai & Chinese',
+      // WhatsApp booking translations
+      'whatsapp_not_available': 'WhatsApp Not Available',
+      'line_not_available': 'Line Not Available',
+      'copy_number_message': 'Copy this number to contact us via WhatsApp:',
+      'copy_line_id_message': 'Copy this Line ID to contact us via Line:',
+      'choose_contact_method': 'Choose Contact Method',
+      'via_whatsapp': 'Via WhatsApp',
+      'via_line': 'Via Line',
+      'cancel': 'Cancel',
+      'copy_number': 'Copy Number',
+      'copy_line_id': 'Copy Line ID',
+      'phone_number_copied': 'Phone number copied to clipboard!',
+      'line_id_copied': 'Line ID copied to clipboard!',
+      'whatsapp_message': 'Hi, I want to book {roomName}. Is it available?',
+      'whatsapp_message_default': 'Hi, I want to book a room. Is it available?',
+      // New copy feedback translations
+      'address_copied': 'Address copied to clipboard!',
+      'phone_copied': 'Phone number copied to clipboard!',
+      'email_copied': 'Email copied to clipboard!',
     },
     Language.thai: {
       'hostel_name': 'Stay Strays โฮสเทล',
@@ -76,7 +96,7 @@ class Translations {
       'book_now': 'จองเลย',
       'explore': 'สำรวจ',
       'welcome': 'ยินดีต้อนรับสู่ Stay Strays',
-      'welcome_subtitle': 'ความสะดวกสบัยสมัยใหม่พบกับเสน่ห์กรุงเทพฯ',
+      'welcome_subtitle': 'ความสะดวกสบายสมัยใหม่พบกับเสน่ห์กรุงเทพฯ',
       'welcome_desc': 'ตั้งอยู่ในย่านหนองแขมที่เงียบสงบ Stay Strays โฮสเทลมีห้องครอบครัวที่ทันสมัยพร้อมเครื่องปรับอากาศ ห้องน้ำส่วนตัว และวิวสวนหรือเมืองที่สวยงาม ห้องพักแต่ละห้องมีระเบียง เครื่องซักผ้า และ WiFi ฟรี พักผ่อนในสวน ระเบียง หรือบาร์ของเรา พร้อมด้วยมินิมาร์ทและร้านกาแฟ',
       'rooms': 'ห้องพักของเรา',
       'rooms_subtitle': 'ที่พักสะดวกสบายสำหรับนักเดินทางทุกคน',
@@ -111,6 +131,25 @@ class Translations {
       'view_all': 'ดูทั้งหมด',
       'languages': 'ภาษาที่ใช้',
       'lang_staff': 'อังกฤษ, ไทย & จีน',
+      // WhatsApp booking translations
+      'whatsapp_not_available': 'WhatsApp ไม่พร้อมใช้งาน',
+      'line_not_available': 'Line ไม่พร้อมใช้งาน',
+      'copy_number_message': 'คัดลอกหมายเลขนี้เพื่อติดต่อเราผ่าน WhatsApp:',
+      'copy_line_id_message': 'คัดลอก Line ID นี้เพื่อติดต่อเราผ่าน Line:',
+      'choose_contact_method': 'เลือกวิธีติดต่อ',
+      'via_whatsapp': 'ผ่าน WhatsApp',
+      'via_line': 'ผ่าน Line',
+      'cancel': 'ยกเลิก',
+      'copy_number': 'คัดลอกหมายเลข',
+      'copy_line_id': 'คัดลอก Line ID',
+      'phone_number_copied': 'คัดลอกหมายเลขโทรศัพท์เรียบร้อยแล้ว!',
+      'line_id_copied': 'คัดลอก Line ID เรียบร้อยแล้ว!',
+      'whatsapp_message': 'สวัสดี ฉันต้องการจองห้อง {roomName} ห้องนี้ว่างไหม?',
+      'whatsapp_message_default': 'สวัสดี ฉันต้องการจองห้องพัก ห้องว่างไหม?',
+      // New copy feedback translations
+      'address_copied': 'คัดลอกที่อยู่เรียบร้อยแล้ว!',
+      'phone_copied': 'คัดลอกหมายเลขโทรศัพท์เรียบร้อยแล้ว!',
+      'email_copied': 'คัดลอกอีเมลเรียบร้อยแล้ว!',
     },
     Language.russian: {
       'hostel_name': 'Хостел Stay Strays',
@@ -154,6 +193,25 @@ class Translations {
       'view_all': 'Показать все',
       'languages': 'Языки',
       'lang_staff': 'Английский, Тайский и Китайский',
+      // WhatsApp booking translations
+      'whatsapp_not_available': 'WhatsApp недоступен',
+      'line_not_available': 'Line недоступен',
+      'copy_number_message': 'Скопируйте этот номер, чтобы связаться с нами через WhatsApp:',
+      'copy_line_id_message': 'Скопируйте этот Line ID, чтобы связаться с нами через Line:',
+      'choose_contact_method': 'Выберите способ связи',
+      'via_whatsapp': 'Через WhatsApp',
+      'via_line': 'Через Line',
+      'cancel': 'Отмена',
+      'copy_number': 'Скопировать номер',
+      'copy_line_id': 'Скопировать Line ID',
+      'phone_number_copied': 'Номер телефона скопирован!',
+      'line_id_copied': 'Line ID скопирован!',
+      'whatsapp_message': 'Привет, я хочу забронировать номер {roomName}. Он доступен?',
+      'whatsapp_message_default': 'Привет, я хочу забронировать номер. Он доступен?',
+      // New copy feedback translations
+      'address_copied': 'Адрес скопирован!',
+      'phone_copied': 'Номер телефона скопирован!',
+      'email_copied': 'Электронная почта скопирована!',
     },
     Language.chinese: {
       'hostel_name': 'Stay Strays 旅舍',
@@ -197,11 +255,37 @@ class Translations {
       'view_all': '查看全部',
       'languages': '语言',
       'lang_staff': '英语、泰语和中文',
+      // WhatsApp booking translations
+      'whatsapp_not_available': 'WhatsApp 不可用',
+      'line_not_available': 'Line 不可用',
+      'copy_number_message': '复制此号码通过 WhatsApp 联系我们：',
+      'copy_line_id_message': '复制此 Line ID 通过 Line 联系我们：',
+      'choose_contact_method': '选择联系方式',
+      'via_whatsapp': '通过 WhatsApp',
+      'via_line': '通过 Line',
+      'cancel': '取消',
+      'copy_number': '复制号码',
+      'copy_line_id': '复制 Line ID',
+      'phone_number_copied': '电话号码已复制到剪贴板！',
+      'line_id_copied': 'Line ID 已复制到剪贴板！',
+      'whatsapp_message': '你好，我想预订{roomName}。有空房吗？',
+      'whatsapp_message_default': '你好，我想预订一个房间。有空房吗？',
+      // New copy feedback translations
+      'address_copied': '地址已复制！',
+      'phone_copied': '电话号码已复制！',
+      'email_copied': '电子邮件已复制！',
     },
   };
 
   static String get(Language lang, String key) {
     return _translations[lang]?[key] ?? _translations[Language.english]![key]!;
+  }
+}
+
+// Utility functions for launching URLs
+Future<void> commonLaunchUrl(String url) async {
+  if (!await launchUrl(Uri.parse(url))) {
+    throw Exception('Could not launch $url');
   }
 }
 
@@ -255,6 +339,160 @@ class _LandingPageState extends State<LandingPage> {
 
   String t(String key) => Translations.get(_currentLanguage, key);
 
+  // Copy to clipboard functionality
+  Future<void> copyToClipboard(String value, String label) async {
+    await Clipboard.setData(ClipboardData(text: value));
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(label),
+        behavior: SnackBarBehavior.floating,
+        duration: const Duration(seconds: 2),
+      ),
+    );
+  }
+
+  // Show dialog for selecting contact method
+  void showBookingMethodDialog({String? roomName}) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: const Color(0xFFFFFBF7),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        title: Text(t('choose_contact_method'), style: _boldText()),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ListTile(
+              leading: Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: const Color(0xFF25D366).withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: const Icon(Icons.textsms_rounded, color: Color(0xFF25D366)),
+              ),
+              title: Text(t('via_whatsapp'), style: _boldText()),
+              subtitle: Text('+66902587401', style: _normalText()),
+              onTap: () {
+                Navigator.pop(context);
+                _launchWhatsApp(roomName: roomName);
+              },
+            ),
+            const Divider(height: 20),
+            ListTile(
+              leading: Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: const Color(0xFF00B900).withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: const Icon(Icons.message, color: Color(0xFF00B900)),
+              ),
+              title: Text(t('via_line'), style: _boldText()),
+              subtitle: Text('@569omptd', style: _normalText()),
+              onTap: () {
+                Navigator.pop(context);
+                _launchLine();
+              },
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text(t('cancel'), style: _interText(color: const Color(0xFF666666))),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // Launch WhatsApp
+  void _launchWhatsApp({String? roomName}) async {
+    const phone = '+66902587401';
+    final message = roomName != null 
+        ? t('whatsapp_message').replaceAll('{roomName}', roomName)
+        : t('whatsapp_message_default');
+    final url = 'whatsapp://send?phone=$phone&text=${Uri.encodeComponent(message)}';
+    
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url));
+    } else {
+      _showCopyDialog(phone, 'whatsapp');
+    }
+  }
+
+  // Launch Line
+  void _launchLine() async {
+    const lineId = '@569omptd';
+    const lineUrl = 'https://line.me/R/ti/p/@569omptd';
+    const lineAppUrl = 'line://ti/p/@569omptd';
+    
+    // Try to open Line app first
+    if (await canLaunchUrl(Uri.parse(lineAppUrl))) {
+      await launchUrl(Uri.parse(lineAppUrl));
+    } 
+    // If Line app is not installed, try to open in browser
+    else if (await canLaunchUrl(Uri.parse(lineUrl))) {
+      await launchUrl(Uri.parse(lineUrl));
+    } else {
+      _showCopyDialog(lineId, 'line');
+    }
+  }
+
+  // Show copy dialog when app is not available
+  void _showCopyDialog(String contact, String type) {
+    final isWhatsApp = type == 'whatsapp';
+    
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: const Color(0xFFFFFBF7),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        title: Text(isWhatsApp ? t('whatsapp_not_available') : t('line_not_available'), 
+            style: _boldText()),
+        content: Text(
+          isWhatsApp ? 
+            '${t('copy_number_message')}\n\n$contact' :
+            '${t('copy_line_id_message')}\n\n$contact', 
+          style: _normalText()
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text(t('cancel'), style: _interText(color: const Color(0xFF666666))),
+          ),
+          TextButton(
+            onPressed: () {
+              final label = isWhatsApp ? t('phone_number_copied') : t('line_id_copied');
+              copyToClipboard(contact, label);
+              Navigator.pop(context);
+            },
+            style: TextButton.styleFrom(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              backgroundColor: const Color(0xFFFF6B35),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+            ),
+            child: Text(
+              isWhatsApp ? t('copy_number') : t('copy_line_id'), 
+              style: _boldText(color: Colors.white)
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // Helper styles
+  TextStyle _boldText({Color color = const Color(0xFF2C2C2C)}) => 
+    GoogleFonts.inter(fontWeight: FontWeight.bold, color: color);
+
+  TextStyle _normalText({Color color = const Color(0xFF555555)}) => 
+    GoogleFonts.inter(color: color);
+
+  TextStyle _interText({Color color = Colors.black}) => 
+    GoogleFonts.inter(color: color);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -265,15 +503,25 @@ class _LandingPageState extends State<LandingPage> {
             controller: _scrollController,
             child: Column(
               children: [
-                HeroSection(key: _homeKey, t: t),
+                HeroSection(key: _homeKey, t: t, onBookNowPressed: () {
+                  _scrollToSection(_roomsKey);
+                  // showBookingMethodDialog();
+                }),
                 WelcomeSection(t: t),
-                RoomsSection(key: _roomsKey, t: t),
+                RoomsSection(key: _roomsKey, t: t, onBookNowPressed: showBookingMethodDialog),
                 FacilitiesSection(key: _facilitiesKey, t: t),
                 GallerySection(key: _galleryKey, t: t),
                 LocationSection(key: _locationKey, t: t),
                 ReviewsSection(key: _reviewsKey, t: t),
                 ContactSection(key: _contactKey, t: t),
-                FooterSection(t: t),
+                FooterSection(
+                  t: t,
+                  onInstagramTap: () => commonLaunchUrl('https://www.instagram.com/stay_strays_hostel'),
+                  onTiktokTap: () => commonLaunchUrl('https://www.tiktok.com/@stay.strays.bangkok'),
+                  onFacebookTap: () => commonLaunchUrl('https://www.facebook.com/people/Stay-Strays-Hostel/61574424366581/'),
+                  onGoogleMapsTap: () => commonLaunchUrl('https://maps.app.goo.gl/P3qhzu7ivXMw7wxX7'),
+                  onLinktreeTap: () => commonLaunchUrl('https://linktr.ee/staystrayshostel?utm_source=linktree_profile_share&ltsid=fc4d4bc7-3135-4823-a236-f76bf10bc954'),
+                ),
               ],
             ),
           ),
@@ -285,6 +533,10 @@ class _LandingPageState extends State<LandingPage> {
             onLocationPressed: () => _scrollToSection(_locationKey),
             onReviewsPressed: () => _scrollToSection(_reviewsKey),
             onContactPressed: () => _scrollToSection(_contactKey),
+            onBookNowPressed: () => _scrollToSection(_roomsKey),
+            // onBookNowPressed: () {
+            //   showBookingMethodDialog();
+            // },
             currentLanguage: _currentLanguage,
             onLanguageChanged: _changeLanguage,
             t: t,
@@ -308,13 +560,25 @@ class _LandingPageState extends State<LandingPage> {
           ),
         ),
         child: SafeArea(
-          child: Column(
+          child: ListView(
             children: [
               const SizedBox(height: 40),
-              Icon(Icons.hotel_rounded, size: 60, color: Colors.white),
-              const SizedBox(height: 16),
+Row(
+  mainAxisAlignment: MainAxisAlignment.center,
+  children: [
+    ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image.asset(
+                  'assets/staystrays/staystrayslogo.png',
+                  height: isMobile ? 60 : 100,  
+                fit: BoxFit.cover, // Ensures the image fills the clipping area
+                ),
+              ),
+  ],
+),
               Text(
                 t('hostel_name'),
+                textAlign: TextAlign.center,
                 style: GoogleFonts.righteous(
                   fontSize: 28,
                   color: Colors.white,
@@ -356,13 +620,8 @@ class _LandingPageState extends State<LandingPage> {
                 child: PulseButton(
                   onPressed: () {
                     Navigator.pop(context);
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(t('book_now'), style: GoogleFonts.inter()),
-                        backgroundColor: Colors.white,
-                        behavior: SnackBarBehavior.floating,
-                      ),
-                    );
+                    // showBookingMethodDialog();
+_scrollToSection(_roomsKey);
                   },
                   child: Container(
                     width: double.infinity,
@@ -417,6 +676,7 @@ class ModernNavBar extends StatefulWidget {
   final VoidCallback onLocationPressed;
   final VoidCallback onReviewsPressed;
   final VoidCallback onContactPressed;
+  final VoidCallback onBookNowPressed;
   final Language currentLanguage;
   final Function(Language) onLanguageChanged;
   final String Function(String) t;
@@ -430,6 +690,7 @@ class ModernNavBar extends StatefulWidget {
     required this.onLocationPressed,
     required this.onReviewsPressed,
     required this.onContactPressed,
+    required this.onBookNowPressed,
     required this.currentLanguage,
     required this.onLanguageChanged,
     required this.t,
@@ -486,10 +747,12 @@ class _ModernNavBarState extends State<ModernNavBar> {
                 onPressed: widget.onHomePressed,
                 child: Row(
                   children: [
-                    Icon(
-                      Icons.hotel_rounded,
-                      color: Colors.white,
-                      size: isMobile ? 28 : 36,
+                    ClipRRect(
+                      borderRadius: BorderRadiusGeometry.circular(5),
+                      child: Image.asset(
+                        'assets/staystrays/staystrayslogo.png',
+                        height: isMobile ? 28 : 50,
+                      ),
                     ),
                     SizedBox(width: isMobile ? 8 : 12),
                     Text(
@@ -509,18 +772,7 @@ class _ModernNavBarState extends State<ModernNavBar> {
                     _buildLanguageSelector(),
                     const SizedBox(width: 24),
                     PulseButton(
-                      onPressed: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              widget.t('book_now'),
-                              style: GoogleFonts.inter(),
-                            ),
-                            backgroundColor: Colors.white,
-                            behavior: SnackBarBehavior.floating,
-                          ),
-                        );
-                      },
+                      onPressed: widget.onBookNowPressed,
                       child: Container(
                         padding: const EdgeInsets.symmetric(
                           horizontal: 32,
@@ -708,8 +960,13 @@ class _PulseButtonState extends State<PulseButton>
 // Hero Section
 class HeroSection extends StatelessWidget {
   final String Function(String) t;
+  final VoidCallback onBookNowPressed;
 
-  const HeroSection({Key? key, required this.t}) : super(key: key);
+  const HeroSection({
+    Key? key, 
+    required this.t,
+    required this.onBookNowPressed,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -750,33 +1007,50 @@ class HeroSection extends StatelessWidget {
                 SlideInAnimation(
                   delay: 0,
                   direction: SlideDirection.down,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 24,
-                      vertical: 12,
-                    ),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFFF6B35),
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Icon(Icons.location_on, color: Colors.white, size: 20),
-                        const SizedBox(width: 8),
-                        Text(
-                          t('location'),
-                          style: GoogleFonts.inter(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 14,
+                  child: InkWell(
+                    onTap: (){
+                      commonLaunchUrl('https://maps.app.goo.gl/P3qhzu7ivXMw7wxX7');
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 24,
+                        vertical: 12,
+                      ),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFFF6B35),
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Icon(Icons.location_on, color: Colors.white, size: 20),
+                          const SizedBox(width: 8),
+                          Text(
+                            t('location'),
+                            style: GoogleFonts.inter(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
-                const SizedBox(height: 32),
+                const SizedBox(height: 15),
+                              
+                SlideInAnimation(
+                  delay: 200,
+                  direction: SlideDirection.up,
+                  child: ClipRRect(
+                    borderRadius: BorderRadiusGeometry.circular(5),
+                    child: Image.asset(
+                      'assets/staystrays/staystrayslogo.png',
+                      height: isMobile ? 60 : 100,  
+                    ),
+                  ),
+                ),
                 SlideInAnimation(
                   delay: 200,
                   direction: SlideDirection.up,
@@ -821,14 +1095,7 @@ class HeroSection extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       PulseButton(
-                        onPressed: () {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(t('book_now'), style: GoogleFonts.inter()),
-                              backgroundColor: const Color(0xFFFF6B35),
-                            ),
-                          );
-                        },
+                        onPressed: onBookNowPressed,
                         child: Container(
                           padding: EdgeInsets.symmetric(
                             horizontal: isMobile ? 32 : 48,
@@ -1022,8 +1289,13 @@ class WelcomeSection extends StatelessWidget {
 // Rooms Section
 class RoomsSection extends StatelessWidget {
   final String Function(String) t;
+  final Function({String? roomName}) onBookNowPressed;
 
-  const RoomsSection({Key? key, required this.t}) : super(key: key);
+  const RoomsSection({
+    Key? key, 
+    required this.t,
+    required this.onBookNowPressed,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -1069,6 +1341,7 @@ class RoomsSection extends StatelessWidget {
           features: t('family_features'),
           image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600',
           t: t,
+          onBookNowPressed: () => onBookNowPressed(roomName: t('family_room')),
         ),
         const SizedBox(height: 24),
         ModernRoomCard(
@@ -1076,6 +1349,7 @@ class RoomsSection extends StatelessWidget {
           features: t('garden_features'),
           image: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600',
           t: t,
+          onBookNowPressed: () => onBookNowPressed(roomName: t('garden_room')),
         ),
       ],
     );
@@ -1090,6 +1364,7 @@ class RoomsSection extends StatelessWidget {
           features: t('family_features'),
           image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600',
           t: t,
+          onBookNowPressed: () => onBookNowPressed(roomName: t('family_room')),
         ),
         const SizedBox(width: 32),
         ModernRoomCard(
@@ -1097,6 +1372,7 @@ class RoomsSection extends StatelessWidget {
           features: t('garden_features'),
           image: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600',
           t: t,
+          onBookNowPressed: () => onBookNowPressed(roomName: t('garden_room')),
         ),
       ],
     );
@@ -1108,6 +1384,7 @@ class ModernRoomCard extends StatefulWidget {
   final String features;
   final String image;
   final String Function(String) t;
+  final VoidCallback onBookNowPressed;
 
   const ModernRoomCard({
     Key? key,
@@ -1115,6 +1392,7 @@ class ModernRoomCard extends StatefulWidget {
     required this.features,
     required this.image,
     required this.t,
+    required this.onBookNowPressed,
   }) : super(key: key);
 
   @override
@@ -1198,17 +1476,7 @@ class _ModernRoomCardState extends State<ModernRoomCard> {
                       ),
                       const SizedBox(height: 24),
                       PulseButton(
-                        onPressed: () {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                '${widget.t('book_now')} - ${widget.title}',
-                                style: GoogleFonts.inter(),
-                              ),
-                              backgroundColor: const Color(0xFFFF6B35),
-                            ),
-                          );
-                        },
+                        onPressed: widget.onBookNowPressed,
                         child: Container(
                           padding: const EdgeInsets.symmetric(
                             horizontal: 32,
@@ -1727,20 +1995,68 @@ class ContactSection extends StatelessWidget {
             runSpacing: 32,
             alignment: WrapAlignment.center,
             children: [
-              _buildContactCard(
-                Icons.location_on,
-                t('address'),
-                t('address_full'),
+              InkWell(
+                onTap: () {
+                  commonLaunchUrl('https://maps.app.goo.gl/P3qhzu7ivXMw7wxX7');
+                },
+                onLongPress: () {
+                  // copy the address to clipboard
+                  Clipboard.setData(ClipboardData(text: t('address_full')));
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(t('address_copied')),
+                      behavior: SnackBarBehavior.floating,
+                      duration: const Duration(seconds: 2),
+                    ),
+                  );
+                },
+                child: _buildContactCard(
+                  Icons.location_on,
+                  t('address'),
+                  t('address_full'),
+                ),
               ),
-              _buildContactCard(
-                Icons.phone,
-                t('phone'),
-                '+66 123 456 789',
+              InkWell(
+                onTap: kIsWeb ? null: () {
+                  commonLaunchUrl('tel:+66902587401');                  
+                },                
+                onLongPress: () {
+                  // copy the phone number to clipboard
+                  Clipboard.setData(ClipboardData(text: "+66902587401"));
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(t('phone_copied')),
+                      behavior: SnackBarBehavior.floating,
+                      duration: const Duration(seconds: 2),
+                    ),
+                  );
+                },
+                child: _buildContactCard(
+                  Icons.phone,
+                  t('phone'),
+                  '+66902587401', // Updated phone number
+                ),
               ),
-              _buildContactCard(
-                Icons.email,
-                t('email'),
-                'info@Stay Strayshostel.com',
+                            InkWell(
+                onTap: () {
+                  commonLaunchUrl('mailto:info@staystrayshostel.com?subject=Stay Strays Hostel Inquiry');                  
+                },
+                onLongPress: () {
+                  // copy the email to clipboard
+                  Clipboard.setData(ClipboardData(text: "info@staystrayshostel.com"));
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(t('email_copied')),
+                      behavior: SnackBarBehavior.floating,
+                      duration: const Duration(seconds: 2),
+                    ),
+                  );
+                },
+                child: _buildContactCard(
+                  Icons.email,
+                  t('email'),
+                  'info@staystrayshostel.com',
+                ),
               ),
             ],
           ),
@@ -1831,8 +2147,21 @@ class ContactSection extends StatelessWidget {
 // Footer Section
 class FooterSection extends StatelessWidget {
   final String Function(String) t;
+  final VoidCallback onInstagramTap;
+  final VoidCallback onTiktokTap;
+  final VoidCallback onFacebookTap;
+  final VoidCallback onGoogleMapsTap;
+  final VoidCallback onLinktreeTap;
 
-  const FooterSection({Key? key, required this.t}) : super(key: key);
+  const FooterSection({
+    Key? key,
+    required this.t,
+    required this.onInstagramTap,
+    required this.onTiktokTap,
+    required this.onFacebookTap,
+    required this.onGoogleMapsTap,
+    required this.onLinktreeTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -1850,16 +2179,28 @@ class FooterSection extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _buildSocialIcon(Icons.facebook),
+              _buildSocialIcon(Icons.photo_camera, onInstagramTap),
               const SizedBox(width: 16),
-              _buildSocialIcon(Icons.photo_camera),
+              _buildSocialIcon(Icons.music_note, onTiktokTap),
               const SizedBox(width: 16),
-              _buildSocialIcon(Icons.language),
+              _buildSocialIcon(Icons.facebook, onFacebookTap),
+              const SizedBox(width: 16),
+              _buildSocialIcon(Icons.map, onGoogleMapsTap),
+              const SizedBox(width: 16),
+              _buildSocialIcon(Icons.link, onLinktreeTap),
             ],
           ),
           const SizedBox(height: 32),
           Divider(color: Colors.white.withOpacity(0.2)),
-          const SizedBox(height: 24),
+          const SizedBox(height: 8),
+          ClipRRect(
+            borderRadius: BorderRadiusGeometry.circular(5),
+            child: Image.asset(
+              'assets/staystrays/staystrayslogo.png',
+              height: isMobile ? 60 : 100,  
+            ),
+          ),
+          const SizedBox(height: 8),
           Text(
             '© 2025 Stay Strays Hostel Bangkok. All rights reserved.',
             textAlign: TextAlign.center,
@@ -1873,16 +2214,19 @@ class FooterSection extends StatelessWidget {
     );
   }
 
-  Widget _buildSocialIcon(IconData icon) {
-    return Container(
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [Color(0xFFFF6B35), Color(0xFFFF8C61)],
+  Widget _buildSocialIcon(IconData icon, VoidCallback onTap) {
+    return PulseButton(
+      onPressed: onTap,
+      child: Container(
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          gradient: const LinearGradient(
+            colors: [Color(0xFFFF6B35), Color(0xFFFF8C61)],
+          ),
+          shape: BoxShape.circle,
         ),
-        shape: BoxShape.circle,
+        child: Icon(icon, color: Colors.white, size: 24),
       ),
-      child: Icon(icon, color: Colors.white, size: 24),
     );
   }
 }
