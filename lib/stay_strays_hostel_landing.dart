@@ -2017,7 +2017,7 @@ class ContactSection extends StatelessWidget {
                 ),
               ),
               InkWell(
-                onTap: kIsWeb ? null: () {
+                onTap: () {
                   commonLaunchUrl('tel:+66902587401');                  
                 },                
                 onLongPress: () {
