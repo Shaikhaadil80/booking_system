@@ -408,19 +408,25 @@ class _LandingPageState extends State<LandingPage> {
   }
 
   // Launch WhatsApp
-  void _launchWhatsApp({String? roomName}) async {
-    const phone = '+66902587401';
-    final message = roomName != null 
-        ? t('whatsapp_message').replaceAll('{roomName}', roomName)
-        : t('whatsapp_message_default');
-    final url = 'whatsapp://send?phone=$phone&text=${Uri.encodeComponent(message)}';
-    
-    if (await canLaunchUrl(Uri.parse(url))) {
-      await launchUrl(Uri.parse(url));
-    } else {
-      _showCopyDialog(phone, 'whatsapp');
-    }
+void _launchWhatsApp({String? roomName}) async {
+  const phone = '66902587401'; // Remove the '+' for the wa.me URL
+  final message = roomName != null 
+      ? t('whatsapp_message').replaceAll('{roomName}', roomName)
+      : t('whatsapp_message_default');
+
+  // Use wa.me for better compatibility across iOS and Android
+  final url = 'https://wa.me/$phone?text=${Uri.encodeComponent(message)}';
+  final uri = Uri.parse(url);
+
+  if (await canLaunchUrl(uri)) {
+    await launchUrl(
+      uri, 
+      mode: LaunchMode.externalApplication, // Crucial for opening external apps
+    );
+  } else {
+    _showCopyDialog('+$phone', 'whatsapp');
   }
+}
 
   // Launch Line
   void _launchLine() async {
