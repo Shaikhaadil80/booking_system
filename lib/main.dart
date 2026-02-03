@@ -1,15 +1,34 @@
 import 'package:booking_system/future_hostel_landing.dart';
+import 'package:booking_system/p29_hostel_landing.dart';
 import 'package:booking_system/pataya_bearch_house_app.dart';
 import 'package:booking_system/stay_strays_hostel_landing.dart';
+import 'package:booking_system/upload/image_upload_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 // void main() {
 //   runApp(const MyApp());
 // }
-void main() {
+void main()async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // await SystemChrome.setPreferredOrientations([
+  //   DeviceOrientation.portraitUp,
+  //   DeviceOrientation.portraitDown,
+  // ]);
+  await Firebase.initializeApp(options: FirebaseOptions(
+      apiKey: "AIzaSyD0doiKpevR5I2WuaVx3V-oHSF8EdIXxOk",
+  authDomain: "staystrayshostel.firebaseapp.com",
+  projectId: "staystrayshostel",
+  storageBucket: "staystrayshostel.firebasestorage.app",
+  messagingSenderId: "763601262306",
+  appId: "1:763601262306:web:ad1a63fc94ff9fb932b0bb",
+  measurementId: "G-NLQXKTB8D2"
+  ));
+
   // runApp(const PattayaBeachHouseApp());
   // runApp(const FutureHostelApp(),);
   // runApp(const StaysStraysHostelApp(),);
+  // runApp(const P29HostelApp(),);
   runApp(const MyApp(),);
 }
 
@@ -29,11 +48,13 @@ class MyApp extends StatelessWidget {
       // home: const MyHomePage(title: 'Home Page'),
       initialRoute: '/',
       routes: {
+        // '/': (context) => const ImageUploadScreen(),
         '/': (context) => const HomePage(),
         // '/home': (context) => const MyHomePage(title: 'Home Page'),
         '/pattayabeachHouse': (context) => const PattayaBeachHouseApp(),
         '/futurehostel': (context) => const FutureHostelApp(),
         '/staystrayshostel': (context) => const StayStraysHostelApp(),
+        '/p29hostel': (context) => const P29HostelApp(),
       },
     );
   }
@@ -84,6 +105,18 @@ class HomePage extends StatelessWidget {
                   width: 150,
                   child: const Text('Stay Strays Hostel')),
                 onPressed: () => Navigator.pushNamed(context, '/staystrayshostel'),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  shape: WidgetStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))), 
+                ),
+                child: SizedBox(
+                  width: 150,
+                  child: const Text('P29 Hostel')),
+                onPressed: () => Navigator.pushNamed(context, '/p29hostel'),
               ),
             ),
           ],

@@ -37,6 +37,26 @@ dependencies:
   google_fonts: ^6.1.0
   url_launcher: ^6.3.2
 
+  firebase_core: ^4.4.0
+  cloud_firestore: ^6.1.2
+  firebase_storage: ^13.0.6 # Optional, if you need Firebase Storage too
+  image_picker: ^1.2.1
+  file_picker: ^10.3.10 # For web file picking
+  http: ^1.6.0
+  dio: ^5.9.1 # Alternative to http for better multipart support
+  path_provider: ^2.1.5
+  uuid: ^4.5.2
+
+  
+  # Add Cloudinary
+  cloudinary_public: ^0.23.1
+  cloudinary_sdk: ^5.0.0+1
+
+
+  # icon and splash screen
+  flutter_native_splash: ^2.4.7
+  flutter_launcher_icons: ^0.14.4 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -61,9 +81,35 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/images/
     - assets/staystrays/
     # - images/a_dot_ham.jpeg
 
+
+
+# Launcher Icon Configuration
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/logo.png" # Path to your icon image
+  min_sdk_android: 21 # Required for some newer icon features
+  web:
+    generate: true
+    image_path: "assets/images/logo.png"
+  windows:
+    generate: true
+    image_path: "assets/images/logo.png"
+    
+# Native Splash Configuration
+flutter_native_splash:
+  color: "#0a0e27"
+  image: assets/images/logo.png
+  android: true
+  ios: true
+  web: true
+  android_12:
+    color: "#0a0e27"
+    image: assets/images/logo.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 

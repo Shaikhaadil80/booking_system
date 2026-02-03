@@ -1,3 +1,7 @@
+import 'dart:developer';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -30,16 +34,18 @@ class Translations {
     Language.english: {
       'hostel_name': 'Stay Strays Hostel',
       'tagline': 'Your Bangkok Adventure Starts Here',
-      'location': 'Nong Khaem, Bangkok',
+      'location': 'Sathorn Area, Bangkok',
       'book_now': 'Book Now',
       'explore': 'Explore',
       'welcome': 'Welcome to Stay Strays',
       'welcome_subtitle': 'Modern comfort meets Bangkok charm',
-      'welcome_desc': 'Located in the peaceful Nong Khaem district, Stay Strays Hostel offers modern family rooms with air-conditioning, private bathrooms, and stunning garden or city views. Each room features a balcony, washing machine, and free WiFi. Relax in our garden, terrace, or bar while enjoying our minimarket and coffee shop.',
+      'welcome_desc':
+          'Located in the peaceful Nong Khaem district, Stay Strays Hostel offers modern family rooms with air-conditioning, private bathrooms, and stunning garden or city views. Each room features a balcony, washing machine, and free WiFi. Relax in our garden, terrace, or bar while enjoying our minimarket and coffee shop.',
       'rooms': 'Our Rooms',
       'rooms_subtitle': 'Comfortable stays for every traveler',
       'family_room': 'Family Room',
-      'family_features': 'Air-conditioning, Private bathroom, City view, Balcony',
+      'family_features':
+          'Air-conditioning, Private bathroom, City view, Balcony',
       'garden_room': 'Garden View Room',
       'garden_features': 'Garden view, Washing machine, Free WiFi, Terrace',
       'facilities': 'Facilities',
@@ -60,7 +66,8 @@ class Translations {
       'reviews': 'Guest Reviews',
       'contact': 'Contact Us',
       'address': 'Address',
-      'address_full': '55/7 Liap Khlong Phasi Charoen Fang Nuea 10 Alley\nNong Khaem, Bangkok 10160\nThailand',
+      'address_full':
+          '149, Subdistrict, 1 Charoen Rat Rd, \nYan Nawa, Sathon, Bangkok 10120, \nThailand',
       'phone': 'Phone',
       'email': 'Email',
       'check_in': 'Check-in: 2:00 PM',
@@ -92,12 +99,13 @@ class Translations {
     Language.thai: {
       'hostel_name': 'Stay Strays โฮสเทล',
       'tagline': 'การผจญภัยในกรุงเทพฯ ของคุณเริ่มต้นที่นี่',
-      'location': 'หนองแขม กรุงเทพฯ',
+      'location': 'พื้นที่สาทร, กรุงเทพฯ',
       'book_now': 'จองเลย',
       'explore': 'สำรวจ',
       'welcome': 'ยินดีต้อนรับสู่ Stay Strays',
       'welcome_subtitle': 'ความสะดวกสบายสมัยใหม่พบกับเสน่ห์กรุงเทพฯ',
-      'welcome_desc': 'ตั้งอยู่ในย่านหนองแขมที่เงียบสงบ Stay Strays โฮสเทลมีห้องครอบครัวที่ทันสมัยพร้อมเครื่องปรับอากาศ ห้องน้ำส่วนตัว และวิวสวนหรือเมืองที่สวยงาม ห้องพักแต่ละห้องมีระเบียง เครื่องซักผ้า และ WiFi ฟรี พักผ่อนในสวน ระเบียง หรือบาร์ของเรา พร้อมด้วยมินิมาร์ทและร้านกาแฟ',
+      'welcome_desc':
+          'ตั้งอยู่ในย่านหนองแขมที่เงียบสงบ Stay Strays โฮสเทลมีห้องครอบครัวที่ทันสมัยพร้อมเครื่องปรับอากาศ ห้องน้ำส่วนตัว และวิวสวนหรือเมืองที่สวยงาม ห้องพักแต่ละห้องมีระเบียง เครื่องซักผ้า และ WiFi ฟรี พักผ่อนในสวน ระเบียง หรือบาร์ของเรา พร้อมด้วยมินิมาร์ทและร้านกาแฟ',
       'rooms': 'ห้องพักของเรา',
       'rooms_subtitle': 'ที่พักสะดวกสบายสำหรับนักเดินทางทุกคน',
       'family_room': 'ห้องครอบครัว',
@@ -122,7 +130,8 @@ class Translations {
       'reviews': 'รีวิวจากผู้เข้าพัก',
       'contact': 'ติดต่อเรา',
       'address': 'ที่อยู่',
-      'address_full': '55/7 เลียบคลองภาษีเจริญฝั่งเหนือซอย 10\nหนองแขม กรุงเทพฯ 10160\nประเทศไทย',
+      'address_full':
+          '149 แขวง 1 ถนนเจริญรัถ\nยานนาวา สาทร กรุงเทพฯ 10120\nประเทศไทย',
       'phone': 'โทรศัพท์',
       'email': 'อีเมล',
       'check_in': 'เช็คอิน: 14:00 น.',
@@ -154,18 +163,20 @@ class Translations {
     Language.russian: {
       'hostel_name': 'Хостел Stay Strays',
       'tagline': 'Ваше приключение в Бангкоке начинается здесь',
-      'location': 'Нонг Кхэм, Бангкок',
+      'location': 'Район Саторн, Бангкок',
       'book_now': 'Забронировать',
       'explore': 'Исследовать',
       'welcome': 'Добро пожаловать в Stay Strays',
       'welcome_subtitle': 'Современный комфорт встречает очарование Бангкока',
-      'welcome_desc': 'Расположенный в тихом районе Нонг Кхэм, хостел Stay Strays предлагает современные семейные номера с кондиционером, отдельными ванными комнатами и потрясающим видом на сад или город. В каждом номере есть балкон, стиральная машина и бесплатный WiFi. Отдохните в нашем саду, на террасе или в баре, наслаждаясь нашим мини-маркетом и кофейней.',
+      'welcome_desc':
+          'Расположенный в тихом районе Нонг Кхэм, хостел Stay Strays предлагает современные семейные номера с кондиционером, отдельными ванными комнатами и потрясающим видом на сад или город. В каждом номере есть балкон, стиральная машина и бесплатный WiFi. Отдохните в нашем саду, на террасе или в баре, наслаждаясь нашим мини-маркетом и кофейней.',
       'rooms': 'Наши номера',
       'rooms_subtitle': 'Комфортное проживание для каждого путешественника',
       'family_room': 'Семейный номер',
       'family_features': 'Кондиционер, Отдельная ванная, Вид на город, Балкон',
       'garden_room': 'Номер с видом на сад',
-      'garden_features': 'Вид на сад, Стиральная машина, Бесплатный WiFi, Терраса',
+      'garden_features':
+          'Вид на сад, Стиральная машина, Бесплатный WiFi, Терраса',
       'facilities': 'Удобства',
       'free_wifi': 'Бесплатный WiFi',
       'parking': 'Бесплатная парковка',
@@ -184,7 +195,8 @@ class Translations {
       'reviews': 'Отзывы гостей',
       'contact': 'Связаться с нами',
       'address': 'Адрес',
-      'address_full': '55/7 Liap Khlong Phasi Charoen Fang Nuea 10 Alley\nНонг Кхэм, Бангкок 10160\nТаиланд',
+      'address_full':
+          '149, Субдистрикт, 1 Чарен Рат Роуд,\nЯн Нава, Саторн, Бангкок 10120,\nТаиланд',
       'phone': 'Телефон',
       'email': 'Эл. почта',
       'check_in': 'Заезд: 14:00',
@@ -196,8 +208,10 @@ class Translations {
       // WhatsApp booking translations
       'whatsapp_not_available': 'WhatsApp недоступен',
       'line_not_available': 'Line недоступен',
-      'copy_number_message': 'Скопируйте этот номер, чтобы связаться с нами через WhatsApp:',
-      'copy_line_id_message': 'Скопируйте этот Line ID, чтобы связаться с нами через Line:',
+      'copy_number_message':
+          'Скопируйте этот номер, чтобы связаться с нами через WhatsApp:',
+      'copy_line_id_message':
+          'Скопируйте этот Line ID, чтобы связаться с нами через Line:',
       'choose_contact_method': 'Выберите способ связи',
       'via_whatsapp': 'Через WhatsApp',
       'via_line': 'Через Line',
@@ -206,8 +220,10 @@ class Translations {
       'copy_line_id': 'Скопировать Line ID',
       'phone_number_copied': 'Номер телефона скопирован!',
       'line_id_copied': 'Line ID скопирован!',
-      'whatsapp_message': 'Привет, я хочу забронировать номер {roomName}. Он доступен?',
-      'whatsapp_message_default': 'Привет, я хочу забронировать номер. Он доступен?',
+      'whatsapp_message':
+          'Привет, я хочу забронировать номер {roomName}. Он доступен?',
+      'whatsapp_message_default':
+          'Привет, я хочу забронировать номер. Он доступен?',
       // New copy feedback translations
       'address_copied': 'Адрес скопирован!',
       'phone_copied': 'Номер телефона скопирован!',
@@ -216,12 +232,13 @@ class Translations {
     Language.chinese: {
       'hostel_name': 'Stay Strays 旅舍',
       'tagline': '您的曼谷冒险从这里开始',
-      'location': '农凯区，曼谷',
+      'location': '沙吞区, 曼谷',
       'book_now': '立即预订',
       'explore': '探索',
       'welcome': '欢迎来到 Stay Strays',
       'welcome_subtitle': '现代舒适邂逅曼谷魅力',
-      'welcome_desc': 'Stay Strays旅舍位于宁静的农凯区，提供现代化的家庭房，配有空调、私人浴室以及美丽的花园或城市景观。每间客房均设有阳台、洗衣机和免费WiFi。在我们的花园、露台或酒吧放松身心，同时享受我们的迷你市场和咖啡店。',
+      'welcome_desc':
+          'Stay Strays旅舍位于宁静的农凯区，提供现代化的家庭房，配有空调、私人浴室以及美丽的花园或城市景观。每间客房均设有阳台、洗衣机和免费WiFi。在我们的花园、露台或酒吧放松身心，同时享受我们的迷你市场和咖啡店。',
       'rooms': '我们的客房',
       'rooms_subtitle': '为每位旅客提供舒适住宿',
       'family_room': '家庭房',
@@ -246,7 +263,7 @@ class Translations {
       'reviews': '客人评价',
       'contact': '联系我们',
       'address': '地址',
-      'address_full': '55/7 Liap Khlong Phasi Charoen Fang Nuea 10 Alley\n农凯区，曼谷 10160\n泰国',
+      'address_full': '149, 分区, 1 查伦拉路,\n延那瓦, 沙吞, 曼谷 10120,\n泰国',
       'phone': '电话',
       'email': '电子邮件',
       'check_in': '入住时间：下午2:00',
@@ -299,7 +316,7 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   final ScrollController _scrollController = ScrollController();
   Language _currentLanguage = Language.english;
-  
+
   final GlobalKey _homeKey = GlobalKey();
   final GlobalKey _roomsKey = GlobalKey();
   final GlobalKey _facilitiesKey = GlobalKey();
@@ -307,6 +324,51 @@ class _LandingPageState extends State<LandingPage> {
   final GlobalKey _locationKey = GlobalKey();
   final GlobalKey _reviewsKey = GlobalKey();
   final GlobalKey _contactKey = GlobalKey();
+
+  // firebase firestore data
+  List<QueryDocumentSnapshot<Map<String, dynamic>>> allCollectionsNameForPics =
+      [];
+  List allPics = [];
+  // firebase firestore data
+
+  @override
+  void initState() {
+    super.initState();
+    getallCollectionAndData();
+  }
+
+  Future getallCollectionAndData() async {
+    await getallCollectionsNameForPics();
+    await getallPics();
+    setState(() {});
+    return Future.value(true);
+  }
+
+  Future getallCollectionsNameForPics() async {
+    var result = await FirebaseFirestore.instance.collection('allpics').get();
+    allCollectionsNameForPics = result.docs;
+    return Future.value(true);
+  }
+
+  Future getallPics() async {
+    for (var i = 0; i < allCollectionsNameForPics.length; i++) {
+      var result = await FirebaseFirestore.instance
+          .collection('allpics')
+          .doc(allCollectionsNameForPics[i].id)
+          .collection('pics')
+          .get();
+
+      // print(
+      //   'allCollectionsNameForPics[i].id ${allCollectionsNameForPics[i].id}',
+      // );
+      // var data = result.docs;
+      // for (var i = 0; i < data.length; i++) {
+      //   log("${i} ${data[i].data()['original_url']}\n");
+      // }
+      allPics.add({'id': allCollectionsNameForPics[i].id, 'data': result.docs});
+    }
+    return Future.value(true);
+  }
 
   void _scrollToSection(GlobalKey key) {
     final context = key.currentContext;
@@ -325,10 +387,7 @@ class _LandingPageState extends State<LandingPage> {
     });
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(
-          'Language changed',
-          style: GoogleFonts.inter(),
-        ),
+        content: Text('Language changed', style: GoogleFonts.inter()),
         backgroundColor: const Color(0xFFFF6B35),
         behavior: SnackBarBehavior.floating,
         duration: const Duration(milliseconds: 1500),
@@ -369,7 +428,10 @@ class _LandingPageState extends State<LandingPage> {
                   color: const Color(0xFF25D366).withOpacity(0.1),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: const Icon(Icons.textsms_rounded, color: Color(0xFF25D366)),
+                child: const Icon(
+                  Icons.textsms_rounded,
+                  color: Color(0xFF25D366),
+                ),
               ),
               title: Text(t('via_whatsapp'), style: _boldText()),
               subtitle: Text('+66902587401', style: _normalText()),
@@ -400,7 +462,10 @@ class _LandingPageState extends State<LandingPage> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text(t('cancel'), style: _interText(color: const Color(0xFF666666))),
+            child: Text(
+              t('cancel'),
+              style: _interText(color: const Color(0xFF666666)),
+            ),
           ),
         ],
       ),
@@ -408,36 +473,37 @@ class _LandingPageState extends State<LandingPage> {
   }
 
   // Launch WhatsApp
-void _launchWhatsApp({String? roomName}) async {
-  const phone = '66902587401'; // Remove the '+' for the wa.me URL
-  final message = roomName != null 
-      ? t('whatsapp_message').replaceAll('{roomName}', roomName)
-      : t('whatsapp_message_default');
+  void _launchWhatsApp({String? roomName}) async {
+    const phone = '66902587401'; // Remove the '+' for the wa.me URL
+    final message = roomName != null
+        ? t('whatsapp_message').replaceAll('{roomName}', roomName)
+        : t('whatsapp_message_default');
 
-  // Use wa.me for better compatibility across iOS and Android
-  final url = 'https://wa.me/$phone?text=${Uri.encodeComponent(message)}';
-  final uri = Uri.parse(url);
+    // Use wa.me for better compatibility across iOS and Android
+    final url = 'https://wa.me/$phone?text=${Uri.encodeComponent(message)}';
+    final uri = Uri.parse(url);
 
-  if (await canLaunchUrl(uri)) {
-    await launchUrl(
-      uri, 
-      mode: LaunchMode.externalApplication, // Crucial for opening external apps
-    );
-  } else {
-    _showCopyDialog('+$phone', 'whatsapp');
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(
+        uri,
+        mode:
+            LaunchMode.externalApplication, // Crucial for opening external apps
+      );
+    } else {
+      _showCopyDialog('+$phone', 'whatsapp');
+    }
   }
-}
 
   // Launch Line
   void _launchLine() async {
     const lineId = '@569omptd';
     const lineUrl = 'https://line.me/R/ti/p/@569omptd';
     const lineAppUrl = 'line://ti/p/@569omptd';
-    
+
     // Try to open Line app first
     if (await canLaunchUrl(Uri.parse(lineAppUrl))) {
       await launchUrl(Uri.parse(lineAppUrl));
-    } 
+    }
     // If Line app is not installed, try to open in browser
     else if (await canLaunchUrl(Uri.parse(lineUrl))) {
       await launchUrl(Uri.parse(lineUrl));
@@ -449,39 +515,48 @@ void _launchWhatsApp({String? roomName}) async {
   // Show copy dialog when app is not available
   void _showCopyDialog(String contact, String type) {
     final isWhatsApp = type == 'whatsapp';
-    
+
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
         backgroundColor: const Color(0xFFFFFBF7),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        title: Text(isWhatsApp ? t('whatsapp_not_available') : t('line_not_available'), 
-            style: _boldText()),
+        title: Text(
+          isWhatsApp ? t('whatsapp_not_available') : t('line_not_available'),
+          style: _boldText(),
+        ),
         content: Text(
-          isWhatsApp ? 
-            '${t('copy_number_message')}\n\n$contact' :
-            '${t('copy_line_id_message')}\n\n$contact', 
-          style: _normalText()
+          isWhatsApp
+              ? '${t('copy_number_message')}\n\n$contact'
+              : '${t('copy_line_id_message')}\n\n$contact',
+          style: _normalText(),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text(t('cancel'), style: _interText(color: const Color(0xFF666666))),
+            child: Text(
+              t('cancel'),
+              style: _interText(color: const Color(0xFF666666)),
+            ),
           ),
           TextButton(
             onPressed: () {
-              final label = isWhatsApp ? t('phone_number_copied') : t('line_id_copied');
+              final label = isWhatsApp
+                  ? t('phone_number_copied')
+                  : t('line_id_copied');
               copyToClipboard(contact, label);
               Navigator.pop(context);
             },
             style: TextButton.styleFrom(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
               backgroundColor: const Color(0xFFFF6B35),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+              ),
             ),
             child: Text(
-              isWhatsApp ? t('copy_number') : t('copy_line_id'), 
-              style: _boldText(color: Colors.white)
+              isWhatsApp ? t('copy_number') : t('copy_line_id'),
+              style: _boldText(color: Colors.white),
             ),
           ),
         ],
@@ -490,14 +565,14 @@ void _launchWhatsApp({String? roomName}) async {
   }
 
   // Helper styles
-  TextStyle _boldText({Color color = const Color(0xFF2C2C2C)}) => 
-    GoogleFonts.inter(fontWeight: FontWeight.bold, color: color);
+  TextStyle _boldText({Color color = const Color(0xFF2C2C2C)}) =>
+      GoogleFonts.inter(fontWeight: FontWeight.bold, color: color);
 
-  TextStyle _normalText({Color color = const Color(0xFF555555)}) => 
-    GoogleFonts.inter(color: color);
+  TextStyle _normalText({Color color = const Color(0xFF555555)}) =>
+      GoogleFonts.inter(color: color);
 
-  TextStyle _interText({Color color = Colors.black}) => 
-    GoogleFonts.inter(color: color);
+  TextStyle _interText({Color color = Colors.black}) =>
+      GoogleFonts.inter(color: color);
 
   @override
   Widget build(BuildContext context) {
@@ -509,24 +584,57 @@ void _launchWhatsApp({String? roomName}) async {
             controller: _scrollController,
             child: Column(
               children: [
-                HeroSection(key: _homeKey, t: t, onBookNowPressed: () {
-                  _scrollToSection(_roomsKey);
-                  // showBookingMethodDialog();
-                }),
+                HeroSection(
+                  key: _homeKey,
+                  t: t,
+                  onBookNowPressed: () {
+                    _scrollToSection(_roomsKey);
+                    // showBookingMethodDialog();
+                  },
+                ),
                 WelcomeSection(t: t),
-                RoomsSection(key: _roomsKey, t: t, onBookNowPressed: showBookingMethodDialog),
+                RoomsSection(
+                  key: _roomsKey,
+                  t: t,
+                  onBookNowPressed: showBookingMethodDialog,
+                  images: allPics,
+                ),
                 FacilitiesSection(key: _facilitiesKey, t: t),
-                GallerySection(key: _galleryKey, t: t),
+                GallerySection(
+                  key: _galleryKey,
+                  t: t,
+                  images: allPics
+                      // 1. Filter out the logo
+                      .where((element) => element['id'].toString() != 'logo')
+                      // 2. Expand the nested 'data' list to flatten the results
+                      .expand((element) {
+                        List dataList = element['data'] as List;
+                        return dataList.map(
+                          (item) => item['image_url'].toString(),
+                        );
+                      })
+                      .toList(),
+                ),
                 LocationSection(key: _locationKey, t: t),
                 ReviewsSection(key: _reviewsKey, t: t),
                 ContactSection(key: _contactKey, t: t),
                 FooterSection(
                   t: t,
-                  onInstagramTap: () => commonLaunchUrl('https://www.instagram.com/stay_strays_hostel'),
-                  onTiktokTap: () => commonLaunchUrl('https://www.tiktok.com/@stay.strays.bangkok'),
-                  onFacebookTap: () => commonLaunchUrl('https://www.facebook.com/people/Stay-Strays-Hostel/61574424366581/'),
-                  onGoogleMapsTap: () => commonLaunchUrl('https://maps.app.goo.gl/P3qhzu7ivXMw7wxX7'),
-                  onLinktreeTap: () => commonLaunchUrl('https://linktr.ee/staystrayshostel?utm_source=linktree_profile_share&ltsid=fc4d4bc7-3135-4823-a236-f76bf10bc954'),
+                  onInstagramTap: () => commonLaunchUrl(
+                    'https://www.instagram.com/stay_strays_hostel',
+                  ),
+                  onTiktokTap: () => commonLaunchUrl(
+                    'https://www.tiktok.com/@stay.strays.bangkok',
+                  ),
+                  onFacebookTap: () => commonLaunchUrl(
+                    'https://www.facebook.com/people/Stay-Strays-Hostel/61574424366581/',
+                  ),
+                  onGoogleMapsTap: () => commonLaunchUrl(
+                    'https://maps.app.goo.gl/P3qhzu7ivXMw7wxX7',
+                  ),
+                  onLinktreeTap: () => commonLaunchUrl(
+                    'https://linktr.ee/staystrayshostel?utm_source=linktree_profile_share&ltsid=fc4d4bc7-3135-4823-a236-f76bf10bc954',
+                  ),
                 ),
               ],
             ),
@@ -569,19 +677,20 @@ void _launchWhatsApp({String? roomName}) async {
           child: ListView(
             children: [
               const SizedBox(height: 40),
-Row(
-  mainAxisAlignment: MainAxisAlignment.center,
-  children: [
-    ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Image.asset(
-                  'assets/staystrays/staystrayslogo.png',
-                  height: isMobile ? 60 : 100,  
-                fit: BoxFit.cover, // Ensures the image fills the clipping area
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.asset(
+                      'assets/staystrays/logo.png',
+                      height: isMobile ? 60 : 100,
+                      fit: BoxFit
+                          .cover, // Ensures the image fills the clipping area
+                    ),
+                  ),
+                ],
               ),
-  ],
-),
               Text(
                 t('hostel_name'),
                 textAlign: TextAlign.center,
@@ -627,7 +736,7 @@ Row(
                   onPressed: () {
                     Navigator.pop(context);
                     // showBookingMethodDialog();
-_scrollToSection(_roomsKey);
+                    _scrollToSection(_roomsKey);
                   },
                   child: Container(
                     width: double.infinity,
@@ -729,10 +838,7 @@ class _ModernNavBarState extends State<ModernNavBar> {
                   colors: [Color(0xFFFF6B35), Color(0xFFFF8C61)],
                 )
               : LinearGradient(
-                  colors: [
-                    Colors.black.withOpacity(0.3),
-                    Colors.transparent,
-                  ],
+                  colors: [Colors.black.withOpacity(0.3), Colors.transparent],
                 ),
           boxShadow: _isScrolled
               ? [
@@ -740,7 +846,7 @@ class _ModernNavBarState extends State<ModernNavBar> {
                     color: Colors.black.withOpacity(0.2),
                     blurRadius: 20,
                     offset: const Offset(0, 5),
-                  )
+                  ),
                 ]
               : [],
         ),
@@ -756,7 +862,7 @@ class _ModernNavBarState extends State<ModernNavBar> {
                     ClipRRect(
                       borderRadius: BorderRadiusGeometry.circular(5),
                       child: Image.asset(
-                        'assets/staystrays/staystrayslogo.png',
+                        'assets/staystrays/logo.png',
                         height: isMobile ? 28 : 50,
                       ),
                     ),
@@ -913,11 +1019,8 @@ class PulseButton extends StatefulWidget {
   final Widget child;
   final VoidCallback onPressed;
 
-  const PulseButton({
-    Key? key,
-    required this.child,
-    required this.onPressed,
-  }) : super(key: key);
+  const PulseButton({Key? key, required this.child, required this.onPressed})
+    : super(key: key);
 
   @override
   State<PulseButton> createState() => _PulseButtonState();
@@ -935,9 +1038,10 @@ class _PulseButtonState extends State<PulseButton>
       duration: const Duration(milliseconds: 150),
       vsync: this,
     );
-    _scaleAnimation = Tween<double>(begin: 1.0, end: 0.92).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
-    );
+    _scaleAnimation = Tween<double>(
+      begin: 1.0,
+      end: 0.92,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
   }
 
   @override
@@ -955,10 +1059,7 @@ class _PulseButtonState extends State<PulseButton>
         widget.onPressed();
       },
       onTapCancel: () => _controller.reverse(),
-      child: ScaleTransition(
-        scale: _scaleAnimation,
-        child: widget.child,
-      ),
+      child: ScaleTransition(scale: _scaleAnimation, child: widget.child),
     );
   }
 }
@@ -968,11 +1069,8 @@ class HeroSection extends StatelessWidget {
   final String Function(String) t;
   final VoidCallback onBookNowPressed;
 
-  const HeroSection({
-    Key? key, 
-    required this.t,
-    required this.onBookNowPressed,
-  }) : super(key: key);
+  const HeroSection({Key? key, required this.t, required this.onBookNowPressed})
+    : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -1014,8 +1112,10 @@ class HeroSection extends StatelessWidget {
                   delay: 0,
                   direction: SlideDirection.down,
                   child: InkWell(
-                    onTap: (){
-                      commonLaunchUrl('https://maps.app.goo.gl/P3qhzu7ivXMw7wxX7');
+                    onTap: () {
+                      commonLaunchUrl(
+                        'https://maps.app.goo.gl/P3qhzu7ivXMw7wxX7',
+                      );
                     },
                     child: Container(
                       padding: const EdgeInsets.symmetric(
@@ -1029,7 +1129,11 @@ class HeroSection extends StatelessWidget {
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          const Icon(Icons.location_on, color: Colors.white, size: 20),
+                          const Icon(
+                            Icons.location_on,
+                            color: Colors.white,
+                            size: 20,
+                          ),
                           const SizedBox(width: 8),
                           Text(
                             t('location'),
@@ -1045,15 +1149,15 @@ class HeroSection extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 15),
-                              
+
                 SlideInAnimation(
                   delay: 200,
                   direction: SlideDirection.up,
                   child: ClipRRect(
                     borderRadius: BorderRadiusGeometry.circular(5),
                     child: Image.asset(
-                      'assets/staystrays/staystrayslogo.png',
-                      height: isMobile ? 60 : 100,  
+                      'assets/staystrays/logo.png',
+                      height: isMobile ? 60 : 100,
                     ),
                   ),
                 ),
@@ -1175,9 +1279,10 @@ class _SlideInAnimationState extends State<SlideInAnimation>
       vsync: this,
     );
 
-    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeOut),
-    );
+    _fadeAnimation = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
 
     Offset begin;
     switch (widget.direction) {
@@ -1215,10 +1320,7 @@ class _SlideInAnimationState extends State<SlideInAnimation>
   Widget build(BuildContext context) {
     return FadeTransition(
       opacity: _fadeAnimation,
-      child: SlideTransition(
-        position: _slideAnimation,
-        child: widget.child,
-      ),
+      child: SlideTransition(position: _slideAnimation, child: widget.child),
     );
   }
 }
@@ -1295,12 +1397,14 @@ class WelcomeSection extends StatelessWidget {
 // Rooms Section
 class RoomsSection extends StatelessWidget {
   final String Function(String) t;
+  final List images;
   final Function({String? roomName}) onBookNowPressed;
 
   const RoomsSection({
-    Key? key, 
+    Key? key,
     required this.t,
     required this.onBookNowPressed,
+    required this.images,
   }) : super(key: key);
 
   @override
@@ -1333,19 +1437,39 @@ class RoomsSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 56),
-          isMobile ? _buildMobileRooms() : _buildDesktopRooms(),
+          isMobile ? _buildMobileRooms(images) : _buildDesktopRooms(images),
         ],
       ),
     );
   }
 
-  Widget _buildMobileRooms() {
+  Widget _buildMobileRooms(List images) {
+    List rooms = [t('family_room'), t('garden_room')];
+    List <String> room1Images = images.where((element) => element['id'].toString() == '1')
+                      // 2. Expand the nested 'data' list to flatten the results
+                      .expand((element) {
+                        List dataList = element['data'] as List;
+                        return dataList.map(
+                          (item) => item['image_url'].toString(),
+                        );
+                      })
+                      .toList();
+    List <String> room2Images = images.where((element) => element['id'].toString() == '2')
+                      // 2. Expand the nested 'data' list to flatten the results
+                      .expand((element) {
+                        List dataList = element['data'] as List;
+                        return dataList.map(
+                          (item) => item['image_url'].toString(),
+                        );
+                      })
+                      .toList();
     return Column(
       children: [
         ModernRoomCard(
           title: t('family_room'),
           features: t('family_features'),
-          image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600',
+          image: room1Images.isNotEmpty ? '${room1Images.first}':
+              'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600',
           t: t,
           onBookNowPressed: () => onBookNowPressed(roomName: t('family_room')),
         ),
@@ -1353,7 +1477,8 @@ class RoomsSection extends StatelessWidget {
         ModernRoomCard(
           title: t('garden_room'),
           features: t('garden_features'),
-          image: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600',
+          image: room2Images.isNotEmpty ? '${room2Images.first}':
+              'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600',
           t: t,
           onBookNowPressed: () => onBookNowPressed(roomName: t('garden_room')),
         ),
@@ -1361,14 +1486,34 @@ class RoomsSection extends StatelessWidget {
     );
   }
 
-  Widget _buildDesktopRooms() {
+  Widget _buildDesktopRooms(List images) {
+    List rooms = [t('family_room'), t('garden_room')];
+    List <String> room1Images = images.where((element) => element['id'].toString() == '1')
+                      // 2. Expand the nested 'data' list to flatten the results
+                      .expand((element) {
+                        List dataList = element['data'] as List;
+                        return dataList.map(
+                          (item) => item['image_url'].toString(),
+                        );
+                      })
+                      .toList();
+    List <String> room2Images = images.where((element) => element['id'].toString() == '2')
+                      // 2. Expand the nested 'data' list to flatten the results
+                      .expand((element) {
+                        List dataList = element['data'] as List;
+                        return dataList.map(
+                          (item) => item['image_url'].toString(),
+                        );
+                      })
+                      .toList();
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         ModernRoomCard(
           title: t('family_room'),
           features: t('family_features'),
-          image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600',
+          image: room1Images.isNotEmpty ? '${room1Images.first}':
+              'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600',
           t: t,
           onBookNowPressed: () => onBookNowPressed(roomName: t('family_room')),
         ),
@@ -1376,7 +1521,8 @@ class RoomsSection extends StatelessWidget {
         ModernRoomCard(
           title: t('garden_room'),
           features: t('garden_features'),
-          image: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600',
+          image: room2Images.isNotEmpty ? '${room2Images.first}':
+              'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600',
           t: t,
           onBookNowPressed: () => onBookNowPressed(roomName: t('garden_room')),
         ),
@@ -1424,7 +1570,9 @@ class _ModernRoomCardState extends State<ModernRoomCard> {
           borderRadius: BorderRadius.circular(30),
           boxShadow: [
             BoxShadow(
-              color: const Color(0xFFFF6B35).withOpacity(_isHovered ? 0.4 : 0.2),
+              color: const Color(
+                0xFFFF6B35,
+              ).withOpacity(_isHovered ? 0.4 : 0.2),
               blurRadius: _isHovered ? 40 : 20,
               offset: Offset(0, _isHovered ? 20 : 10),
             ),
@@ -1525,7 +1673,7 @@ class _ModernRoomCardState extends State<ModernRoomCard> {
   }
 }
 
-// Facilities Section  
+// Facilities Section
 class FacilitiesSection extends StatelessWidget {
   final String Function(String) t;
 
@@ -1629,22 +1777,23 @@ class FacilitiesSection extends StatelessWidget {
 // Gallery Section
 class GallerySection extends StatelessWidget {
   final String Function(String) t;
+  final List<String> images;
 
-  const GallerySection({Key? key, required this.t}) : super(key: key);
+  const GallerySection({Key? key, required this.t, required this.images})
+    : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final isMobile = MediaQuery.of(context).size.width < 768;
-
-    final images = [
-      'https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=600',
-      'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600',
-      'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600',
-      'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600',
-      'https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=600',
-      'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600',
-    ];
-
+    // final images = [
+    //   'https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=600',
+    //   'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600',
+    //   'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600',
+    //   'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600',
+    //   'https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=600',
+    //   'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600',
+    // ];
+    // log("images ${images.toList()}");
     return Container(
       padding: EdgeInsets.symmetric(
         horizontal: isMobile ? 24 : 80,
@@ -1666,7 +1815,7 @@ class GallerySection extends StatelessWidget {
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: isMobile ? 2 : 3,
+              crossAxisCount: isMobile ? 2 : 5,
               crossAxisSpacing: 16,
               mainAxisSpacing: 16,
               childAspectRatio: 1,
@@ -1675,10 +1824,7 @@ class GallerySection extends StatelessWidget {
             itemBuilder: (context, index) {
               return ClipRRect(
                 borderRadius: BorderRadius.circular(20),
-                child: Image.network(
-                  images[index],
-                  fit: BoxFit.cover,
-                ),
+                child: Image.network(images[index], fit: BoxFit.cover),
               );
             },
           ),
@@ -1851,7 +1997,8 @@ class ReviewsSection extends StatelessWidget {
               ReviewCard(
                 name: 'Anna Smith',
                 rating: 5,
-                review: 'Amazing hostel! The garden view is beautiful and staff are very helpful. Highly recommend!',
+                review:
+                    'Amazing hostel! The garden view is beautiful and staff are very helpful. Highly recommend!',
               ),
               ReviewCard(
                 name: 'Chen Wei',
@@ -1861,7 +2008,8 @@ class ReviewsSection extends StatelessWidget {
               ReviewCard(
                 name: 'Dmitri Ivanov',
                 rating: 4,
-                review: 'Отличное место для бюджетного отдыха. Чистые номера и хорошие удобства.',
+                review:
+                    'Отличное место для бюджетного отдыха. Чистые номера и хорошие удобства.',
               ),
             ],
           ),
@@ -2024,8 +2172,8 @@ class ContactSection extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-                  commonLaunchUrl('tel:+66902587401');                  
-                },                
+                  commonLaunchUrl('tel:+66902587401');
+                },
                 onLongPress: () {
                   // copy the phone number to clipboard
                   Clipboard.setData(ClipboardData(text: "+66902587401"));
@@ -2043,13 +2191,17 @@ class ContactSection extends StatelessWidget {
                   '+66902587401', // Updated phone number
                 ),
               ),
-                            InkWell(
+              InkWell(
                 onTap: () {
-                  commonLaunchUrl('mailto:info@staystrayshostel.com?subject=Stay Strays Hostel Inquiry');                  
+                  commonLaunchUrl(
+                    'mailto:staystraysbangkok@gmail.com?subject=Stay Strays Hostel Inquiry',
+                  );
                 },
                 onLongPress: () {
                   // copy the email to clipboard
-                  Clipboard.setData(ClipboardData(text: "info@staystrayshostel.com"));
+                  Clipboard.setData(
+                    ClipboardData(text: "staystraysbangkok@gmail.com"),
+                  );
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text(t('email_copied')),
@@ -2061,7 +2213,7 @@ class ContactSection extends StatelessWidget {
                 child: _buildContactCard(
                   Icons.email,
                   t('email'),
-                  'info@staystrayshostel.com',
+                  'staystraysbangkok@gmail.com',
                 ),
               ),
             ],
@@ -2202,8 +2354,8 @@ class FooterSection extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadiusGeometry.circular(5),
             child: Image.asset(
-              'assets/staystrays/staystrayslogo.png',
-              height: isMobile ? 60 : 100,  
+              'assets/staystrays/logo.png',
+              height: isMobile ? 60 : 100,
             ),
           ),
           const SizedBox(height: 8),
