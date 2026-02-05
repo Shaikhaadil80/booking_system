@@ -10,7 +10,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 //   runApp(const MyApp());
 // }
 void main()async {
-await dotenv.load();
+// await dotenv.load();
 
   WidgetsFlutterBinding.ensureInitialized();
   // await SystemChrome.setPreferredOrientations([
