@@ -15,7 +15,7 @@ import 'package:cloudinary_sdk/cloudinary_sdk.dart' as cld_sdk;
 class CloudinaryService {
   // Cloudinary configuration
   
-  static final String ? _cloudName = dotenv.env['CLOUD_NAME'];
+  static final String ? _cloudName =  dotenv.env['CLOUD_NAME'];
   static final String ? _apiKey = dotenv.env['API_KEY'];
   static final String ? _apiSecret = dotenv.env['API_SECRET'];
   static final String ? _uploadPreset = dotenv.env['UPLOAD_PRESET'];
