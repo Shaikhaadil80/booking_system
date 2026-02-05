@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 import 'package:file_picker/file_picker.dart';
@@ -13,10 +14,11 @@ import 'package:cloudinary_sdk/cloudinary_sdk.dart' as cld_sdk;
 
 class CloudinaryService {
   // Cloudinary configuration
-  static const String _cloudName = 'dhz6vku1a';
-  static const String _apiKey = '918522682216149';
-  static const String _apiSecret = '9CIWT_AtZ5wFD6FGq-U_pfNENsY';
-  static const String _uploadPreset = 'ml_default';
+  
+  static final String ? _cloudName = dotenv.env['CLOUD_NAME'];
+  static final String ? _apiKey = dotenv.env['API_KEY'];
+  static final String ? _apiSecret = dotenv.env['API_SECRET'];
+  static final String ? _uploadPreset = dotenv.env['UPLOAD_PRESET'];
   
   // Firebase collections
   static const String _firebaseCollection = 'allpics';
@@ -31,8 +33,8 @@ class CloudinaryService {
   // Initialize Cloudinary
   static void _initializeCloudinary() {
     _cloudinary = CloudinaryPublic(
-      _cloudName,
-      _uploadPreset,
+      _cloudName??'',
+      _uploadPreset?? '',
       cache: false,
     );
   }
@@ -285,7 +287,7 @@ class CloudinaryService {
       var request = http.MultipartRequest('POST', Uri.parse(uploadUrl));
       
       // Add fields with quality transformation
-      request.fields['upload_preset'] = _uploadPreset;
+      request.fields['upload_preset'] = _uploadPreset?? '';
       request.fields['folder'] = folderName;
       request.fields['timestamp'] = (DateTime.now().millisecondsSinceEpoch ~/ 1000).toString();
       
@@ -354,7 +356,7 @@ class CloudinaryService {
     try {
       // For mobile, we can use cloudinary_sdk for additional compression
       // FIX: Use the prefixed 'cld_sdk' alias here
-      final cloudinarySdk = cld_sdk.Cloudinary.basic(cloudName: _cloudName);
+      final cloudinarySdk = cld_sdk.Cloudinary.basic(cloudName: _cloudName??'');
       
       final file = File(imageFile.path);
       if (!file.existsSync()) {

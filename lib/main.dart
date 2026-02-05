@@ -2,14 +2,16 @@ import 'package:booking_system/future_hostel_landing.dart';
 import 'package:booking_system/p29_hostel_landing.dart';
 import 'package:booking_system/pataya_bearch_house_app.dart';
 import 'package:booking_system/stay_strays_hostel_landing.dart';
-import 'package:booking_system/upload/image_upload_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 // void main() {
 //   runApp(const MyApp());
 // }
 void main()async {
+await dotenv.load();
+
   WidgetsFlutterBinding.ensureInitialized();
   // await SystemChrome.setPreferredOrientations([
   //   DeviceOrientation.portraitUp,
@@ -107,18 +109,18 @@ class HomePage extends StatelessWidget {
                 onPressed: () => Navigator.pushNamed(context, '/staystrayshostel'),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  shape: WidgetStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))), 
-                ),
-                child: SizedBox(
-                  width: 150,
-                  child: const Text('P29 Hostel')),
-                onPressed: () => Navigator.pushNamed(context, '/p29hostel'),
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.all(8.0),
+            //   child: ElevatedButton(
+            //     style: ButtonStyle(
+            //       shape: WidgetStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))), 
+            //     ),
+            //     child: SizedBox(
+            //       width: 150,
+            //       child: const Text('P29 Hostel')),
+            //     onPressed: () => Navigator.pushNamed(context, '/p29hostel'),
+            //   ),
+            // ),
           ],
         ),
       ),

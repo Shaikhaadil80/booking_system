@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -30,17 +29,30 @@ class StayStraysHostelApp extends StatelessWidget {
 enum Language { english, thai, russian, chinese }
 
 class Translations {
-  static final Map<Language, Map<String, String>> _translations = {
+static final Map<Language, Map<String, String>> _translations = {
     Language.english: {
       'hostel_name': 'Stay Strays Hostel',
       'tagline': 'Your Bangkok Adventure Starts Here',
       'location': 'Sathorn Area, Bangkok',
       'book_now': 'Book Now',
       'explore': 'Explore',
-      'welcome': 'Welcome to Stay Strays',
+      'welcome': '🌟 Warm Welcome to Stay Strays Hostel 🌟',
       'welcome_subtitle': 'Modern comfort meets Bangkok charm',
       'welcome_desc':
-          'Located in the peaceful Nong Khaem district, Stay Strays Hostel offers modern family rooms with air-conditioning, private bathrooms, and stunning garden or city views. Each room features a balcony, washing machine, and free WiFi. Relax in our garden, terrace, or bar while enjoying our minimarket and coffee shop.',
+          'ONLY 6 mins walk from BTS\n'
+          '🏡✨ Our hostel is your new home away from home! Located near Old Town Road 🇹🇭 (Thailand’s very first road!), we’re in the heart of the city with so much to explore. #Thaiprice #thaiculture \n\n'
+          'Stay Strays hostel, we offers group rooms in the heart of Bangkok. Either one whole floor together or one whole building to stay together for cheap price \n\n'
+          '💫 Landmarks Nearby:\n'
+          '🚤 Chao Phraya River – Stunning views & boat tours\n'
+          '🛕 Wat Yan Nawa – The famous "Boat Temple"\n'
+          '🛍️ Asiatique The Riverfront – Shopping, dining, & fun!\n'
+          '🛍️ Icon Siam - Luxury department store\n'
+          '🍜 Local Markets – Dive into authentic Thai street food\n'
+          '🖼️ Streets arts - alongside Charoenkrung road first road in Thailand\n\n'
+          '✨ At our hostel, you’ll:\n'
+          '💬 Meet new friends\n'
+          '🧑‍🍳 Learn Thai culture & food\n'
+          '🌏 Feel the true spirit of Bangkok',
       'rooms': 'Our Rooms',
       'rooms_subtitle': 'Comfortable stays for every traveler',
       'family_room': 'Family Room',
@@ -48,6 +60,10 @@ class Translations {
           'Air-conditioning, Private bathroom, City view, Balcony',
       'garden_room': 'Garden View Room',
       'garden_features': 'Garden view, Washing machine, Free WiFi, Terrace',
+      'single_room_hammock': 'Single Room with Hammock',
+      'single_room_hammock_desc': '6ft. Bed with Hammock and Smart Tv',
+      'single_room_smart_tv': 'Single Room with Smart Tv',
+      'single_room_smart_tv_desc': '4ft. Bed with Smart Tv',
       'facilities': 'Facilities',
       'free_wifi': 'Free WiFi',
       'parking': 'Free Parking',
@@ -102,16 +118,33 @@ class Translations {
       'location': 'พื้นที่สาทร, กรุงเทพฯ',
       'book_now': 'จองเลย',
       'explore': 'สำรวจ',
-      'welcome': 'ยินดีต้อนรับสู่ Stay Strays',
+      'welcome': '🌟 ยินดีต้อนรับสู่ Stay Strays โฮสเทล 🌟',
       'welcome_subtitle': 'ความสะดวกสบายสมัยใหม่พบกับเสน่ห์กรุงเทพฯ',
       'welcome_desc':
-          'ตั้งอยู่ในย่านหนองแขมที่เงียบสงบ Stay Strays โฮสเทลมีห้องครอบครัวที่ทันสมัยพร้อมเครื่องปรับอากาศ ห้องน้ำส่วนตัว และวิวสวนหรือเมืองที่สวยงาม ห้องพักแต่ละห้องมีระเบียง เครื่องซักผ้า และ WiFi ฟรี พักผ่อนในสวน ระเบียง หรือบาร์ของเรา พร้อมด้วยมินิมาร์ทและร้านกาแฟ',
+          'ห่างจาก BTS เพียง 6 นาที\n'
+          '🏡✨ โฮสเทลของเราเป็นบ้านหลังที่สองของคุณ! ตั้งอยู่ใกล้ถนน Old Town Road 🇹🇭 (ถนนสายแรกของประเทศไทย!) เราอยู่ในใจกลางเมืองที่มีอะไรให้สำรวจมากมาย #ราคาไทย #วัฒนธรรมไทย \n\n'
+          'Stay Strays โฮสเทล เรามีห้องสำหรับกลุ่มในใจกลางกรุงเทพฯ ทั้งเช่าทั้งชั้นหรือทั้งอาคารเพื่อพักร่วมกันในราคาประหยัด \n\n'
+          '💫 สถานที่สำคัญใกล้เคียง:\n'
+          '🚤 แม่น้ำเจ้าพระยา – วิวสวยงามและท่องเที่ยวเรือ\n'
+          '🛕 วัดยานนาวา – วัดเรือที่โด่งดัง\n'
+          '🛍️ Asiatique The Riverfront – ช้อปปิ้ง อาหาร และความสนุก!\n'
+          '🛍️ ไอคอนสยาม – ห้างสรรพสินค้าหรู\n'
+          '🍜 ตลาดท้องถิ่น – ดำดิ่งสู่สตรีทฟู้ดไทยแท้\n'
+          '🖼️ ศิลปะข้างถนน – ตามถนนเจริญกรุง ถนนสายแรกของไทย\n\n'
+          '✨ ที่โฮสเทลของเรา คุณจะได้:\n'
+          '💬 พบเพื่อนใหม่\n'
+          '🧑‍🍳 เรียนรู้วัฒนธรรมและอาหารไทย\n'
+          '🌏 รู้สึกถึงจิตวิญญาณแท้ๆ ของกรุงเทพฯ',
       'rooms': 'ห้องพักของเรา',
       'rooms_subtitle': 'ที่พักสะดวกสบายสำหรับนักเดินทางทุกคน',
       'family_room': 'ห้องครอบครัว',
       'family_features': 'เครื่องปรับอากาศ, ห้องน้ำส่วนตัว, วิวเมือง, ระเบียง',
       'garden_room': 'ห้องวิวสวน',
       'garden_features': 'วิวสวน, เครื่องซักผ้า, WiFi ฟรี, ระเบียง',
+      'single_room_hammock': 'ห้องเดี่ยวพร้อมเปล',
+      'single_room_hammock_desc': 'เตียง 6 ฟุต พร้อมเปลและสมาร์ททีวี',
+      'single_room_smart_tv': 'ห้องเดี่ยวพร้อมสมาร์ททีวี',
+      'single_room_smart_tv_desc': 'เตียง 4 ฟุต พร้อมสมาร์ททีวี',
       'facilities': 'สิ่งอำนวยความสะดวก',
       'free_wifi': 'WiFi ฟรี',
       'parking': 'ที่จอดรถฟรี',
@@ -166,17 +199,33 @@ class Translations {
       'location': 'Район Саторн, Бангкок',
       'book_now': 'Забронировать',
       'explore': 'Исследовать',
-      'welcome': 'Добро пожаловать в Stay Strays',
+      'welcome': '🌟 Теплый прием в хостеле Stay Strays 🌟',
       'welcome_subtitle': 'Современный комфорт встречает очарование Бангкока',
       'welcome_desc':
-          'Расположенный в тихом районе Нонг Кхэм, хостел Stay Strays предлагает современные семейные номера с кондиционером, отдельными ванными комнатами и потрясающим видом на сад или город. В каждом номере есть балкон, стиральная машина и бесплатный WiFi. Отдохните в нашем саду, на террасе или в баре, наслаждаясь нашим мини-маркетом и кофейней.',
+          'Всего 6 минут пешком до BTS\n'
+          '🏡✨ Наш хостел - ваш новый дом вдали от дома! Расположен рядом с Олд-Таун-Роуд 🇹🇭 (первой дорогой Таиланда!), мы находимся в самом центре города, где есть что исследовать. #ТайскаяЦена #ТайскаяКультура \n\n'
+          'Хостел Stay Strays предлагает групповые номера в центре Бангкока. Можно арендовать целый этаж или целое здание для совместного проживания по низкой цене. \n\n'
+          '💫 Достопримечательности поблизости:\n'
+          '🚤 Река Чао Прайя – Потрясающие виды и лодочные туры\n'
+          '🛕 Ват Ян Нава – Знаменитый "Храм-Лодка"\n'
+          '🛍️ Asiatique The Riverfront – Шопинг, питание и развлечения!\n'
+          '🛍️ Icon Siam - Роскошный универмаг\n'
+          '🍜 Местные рынки – Погрузитесь в настоящую тайскую уличную еду\n'
+          '🖼️ Уличное искусство – вдоль первой дороги Таиланда, Чаренкрунг\n\n'
+          '✨ В нашем хостеле вы:\n'
+          '💬 Встретите новых друзей\n'
+          '🧑‍🍳 Узнаете тайскую культуру и еду\n'
+          '🌏 Почувствуете истинный дух Бангкока',
       'rooms': 'Наши номера',
       'rooms_subtitle': 'Комфортное проживание для каждого путешественника',
       'family_room': 'Семейный номер',
       'family_features': 'Кондиционер, Отдельная ванная, Вид на город, Балкон',
       'garden_room': 'Номер с видом на сад',
-      'garden_features':
-          'Вид на сад, Стиральная машина, Бесплатный WiFi, Терраса',
+      'garden_features': 'Вид на сад, Стиральная машина, Бесплатный WiFi, Терраса',
+      'single_room_hammock': 'Одноместный номер с гамаком',
+      'single_room_hammock_desc': 'Кровать 6 футов с гамаком и смарт-ТВ',
+      'single_room_smart_tv': 'Одноместный номер со смарт-ТВ',
+      'single_room_smart_tv_desc': 'Кровать 4 фута со смарт-ТВ',
       'facilities': 'Удобства',
       'free_wifi': 'Бесплатный WiFi',
       'parking': 'Бесплатная парковка',
@@ -208,10 +257,8 @@ class Translations {
       // WhatsApp booking translations
       'whatsapp_not_available': 'WhatsApp недоступен',
       'line_not_available': 'Line недоступен',
-      'copy_number_message':
-          'Скопируйте этот номер, чтобы связаться с нами через WhatsApp:',
-      'copy_line_id_message':
-          'Скопируйте этот Line ID, чтобы связаться с нами через Line:',
+      'copy_number_message': 'Скопируйте этот номер, чтобы связаться с нами через WhatsApp:',
+      'copy_line_id_message': 'Скопируйте этот Line ID, чтобы связаться с нами через Line:',
       'choose_contact_method': 'Выберите способ связи',
       'via_whatsapp': 'Через WhatsApp',
       'via_line': 'Через Line',
@@ -220,10 +267,8 @@ class Translations {
       'copy_line_id': 'Скопировать Line ID',
       'phone_number_copied': 'Номер телефона скопирован!',
       'line_id_copied': 'Line ID скопирован!',
-      'whatsapp_message':
-          'Привет, я хочу забронировать номер {roomName}. Он доступен?',
-      'whatsapp_message_default':
-          'Привет, я хочу забронировать номер. Он доступен?',
+      'whatsapp_message': 'Привет, я хочу забронировать номер {roomName}. Он доступен?',
+      'whatsapp_message_default': 'Привет, я хочу забронировать номер. Он доступен?',
       // New copy feedback translations
       'address_copied': 'Адрес скопирован!',
       'phone_copied': 'Номер телефона скопирован!',
@@ -235,16 +280,33 @@ class Translations {
       'location': '沙吞区, 曼谷',
       'book_now': '立即预订',
       'explore': '探索',
-      'welcome': '欢迎来到 Stay Strays',
+      'welcome': '🌟 热烈欢迎来到 Stay Strays 旅舍 🌟',
       'welcome_subtitle': '现代舒适邂逅曼谷魅力',
       'welcome_desc':
-          'Stay Strays旅舍位于宁静的农凯区，提供现代化的家庭房，配有空调、私人浴室以及美丽的花园或城市景观。每间客房均设有阳台、洗衣机和免费WiFi。在我们的花园、露台或酒吧放松身心，同时享受我们的迷你市场和咖啡店。',
+          '距离BTS仅6分钟步行路程\n'
+          '🏡✨ 我们的旅舍是您远离家乡的新家！位于旧城路附近 🇹🇭 （泰国的第一条路！），我们身处城市中心，有太多值得探索的地方。 #泰国价格 #泰国文化 \n\n'
+          'Stay Strays旅舍，我们在曼谷市中心提供团体客房。可以租用整层楼或整栋楼，以低廉的价格一起住宿。 \n\n'
+          '💫 附近地标：\n'
+          '🚤 湄南河 – 壮丽的景色和游船之旅\n'
+          '🛕 耶纳瓦寺 – 著名的"船庙"\n'
+          '🛍️ Asiatique河滨夜市 – 购物、餐饮和娱乐！\n'
+          '🛍️ 暹罗天地 – 豪华百货商店\n'
+          '🍜 当地市场 – 沉浸于正宗泰国街头美食\n'
+          '🖼️ 街头艺术 – 沿着泰国第一条路Charoenkrung路\n\n'
+          '✨ 在我们的旅舍，您将：\n'
+          '💬 结识新朋友\n'
+          '🧑‍🍳 了解泰国文化和美食\n'
+          '🌏 感受曼谷的真正精神',
       'rooms': '我们的客房',
       'rooms_subtitle': '为每位旅客提供舒适住宿',
       'family_room': '家庭房',
       'family_features': '空调，私人浴室，城市景观，阳台',
       'garden_room': '花园景观房',
       'garden_features': '花园景观，洗衣机，免费WiFi，露台',
+      'single_room_hammock': '带吊床的单人房',
+      'single_room_hammock_desc': '6英尺床，带吊床和智能电视',
+      'single_room_smart_tv': '带智能电视的单人房',
+      'single_room_smart_tv_desc': '4英尺床，带智能电视',
       'facilities': '设施',
       'free_wifi': '免费WiFi',
       'parking': '免费停车',
@@ -255,7 +317,7 @@ class Translations {
       'housekeeping': '每日清洁',
       'non_smoking': '禁烟',
       'location_title': '位置',
-      'location_subtitle': '从Stays Strays探索曼谷',
+      'location_subtitle': '从Stay Strays探索曼谷',
       'nearby': '附近景点',
       'wat_arun': '黎明寺',
       'grand_palace': '大皇宫',
@@ -610,7 +672,7 @@ class _LandingPageState extends State<LandingPage> {
                       .expand((element) {
                         List dataList = element['data'] as List;
                         return dataList.map(
-                          (item) => item['image_url'].toString(),
+                          (item) => item['image_url'].toString().replaceAll(RegExp(r'\.[^.]*$'), '.jpg'),
                         );
                       })
                       .toList(),
@@ -660,113 +722,115 @@ class _LandingPageState extends State<LandingPage> {
     );
   }
 
-  Widget _buildDrawer() {
-    final isMobile = MediaQuery.of(context).size.width < 768;
-    if (!isMobile) return const SizedBox.shrink();
+Widget _buildDrawer() {
+  final isMobile = MediaQuery.of(context).size.width < 768;
+  if (!isMobile) return const SizedBox.shrink();
 
-    return Drawer(
-      child: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [Color(0xFFFF6B35), Color(0xFFFF8C61)],
-          ),
+  return Drawer(
+    child: Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Color(0xFFFF6B35), Color(0xFFFF8C61)],
         ),
-        child: SafeArea(
-          child: ListView(
-            children: [
-              const SizedBox(height: 40),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+      ),
+      child: SafeArea(
+        child: Column( // <-- Change ListView to Column
+          children: [
+            Expanded( // <-- Use Expanded for the scrollable part
+              child: ListView(
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.asset(
-                      'assets/staystrays/logo.png',
-                      height: isMobile ? 60 : 100,
-                      fit: BoxFit
-                          .cover, // Ensures the image fills the clipping area
+                  const SizedBox(height: 40),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image.asset(
+                          'assets/staystrays/logo.png',
+                          height: isMobile ? 60 : 100,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Text(
+                    t('hostel_name'),
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.righteous(
+                      fontSize: 28,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
+                  const SizedBox(height: 40),
+                  _drawerItem(Icons.home, t('welcome').split(' ')[2], () {
+                    Navigator.pop(context);
+                    _scrollToSection(_homeKey);
+                  }),
+                  _drawerItem(Icons.bed, t('rooms'), () {
+                    Navigator.pop(context);
+                    _scrollToSection(_roomsKey);
+                  }),
+                  _drawerItem(Icons.spa, t('facilities'), () {
+                    Navigator.pop(context);
+                    _scrollToSection(_facilitiesKey);
+                  }),
+                  _drawerItem(Icons.photo_library, t('gallery'), () {
+                    Navigator.pop(context);
+                    _scrollToSection(_galleryKey);
+                  }),
+                  _drawerItem(Icons.location_on, t('location_title'), () {
+                    Navigator.pop(context);
+                    _scrollToSection(_locationKey);
+                  }),
+                  _drawerItem(Icons.star, t('reviews'), () {
+                    Navigator.pop(context);
+                    _scrollToSection(_reviewsKey);
+                  }),
+                  _drawerItem(Icons.phone, t('contact'), () {
+                    Navigator.pop(context);
+                    _scrollToSection(_contactKey);
+                  }),
                 ],
               ),
-              Text(
-                t('hostel_name'),
-                textAlign: TextAlign.center,
-                style: GoogleFonts.righteous(
-                  fontSize: 28,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 40),
-              _drawerItem(Icons.home, t('welcome').split(' ')[0], () {
-                Navigator.pop(context);
-                _scrollToSection(_homeKey);
-              }),
-              _drawerItem(Icons.bed, t('rooms'), () {
-                Navigator.pop(context);
-                _scrollToSection(_roomsKey);
-              }),
-              _drawerItem(Icons.spa, t('facilities'), () {
-                Navigator.pop(context);
-                _scrollToSection(_facilitiesKey);
-              }),
-              _drawerItem(Icons.photo_library, t('gallery'), () {
-                Navigator.pop(context);
-                _scrollToSection(_galleryKey);
-              }),
-              _drawerItem(Icons.location_on, t('location_title'), () {
-                Navigator.pop(context);
-                _scrollToSection(_locationKey);
-              }),
-              _drawerItem(Icons.star, t('reviews'), () {
-                Navigator.pop(context);
-                _scrollToSection(_reviewsKey);
-              }),
-              _drawerItem(Icons.phone, t('contact'), () {
-                Navigator.pop(context);
-                _scrollToSection(_contactKey);
-              }),
-              const Spacer(),
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: PulseButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                    // showBookingMethodDialog();
-                    _scrollToSection(_roomsKey);
-                  },
-                  child: Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    child: Center(
-                      child: Text(
-                        t('book_now'),
-                        style: GoogleFonts.inter(
-                          color: const Color(0xFFFF6B35),
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
+            ),
+            // This stays at the bottom
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: PulseButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  _scrollToSection(_roomsKey);
+                },
+                child: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: Center(
+                    child: Text(
+                      t('book_now'),
+                      style: GoogleFonts.inter(
+                        color: const Color(0xFFFF6B35),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
                       ),
                     ),
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
-            ],
-          ),
+            ),
+            const SizedBox(height: 20),
+          ],
         ),
       ),
-    );
-  }
-
-  Widget _drawerItem(IconData icon, String title, VoidCallback onTap) {
+    ),
+  );
+}  Widget _drawerItem(IconData icon, String title, VoidCallback onTap) {
     return ListTile(
       leading: Icon(icon, color: Colors.white),
       title: Text(
@@ -1081,8 +1145,9 @@ class HeroSection extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: const NetworkImage(
-            'https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=1920',
+          image: NetworkImage(
+            // 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=1920',
+            'https://res.cloudinary.com/dhz6vku1a/image/upload/f_auto,q_50,w_1920,c_limit/v1770129391/1/IMG_9956_mo0fs0.heic'.replaceAll(RegExp(r'\.[^.]*$'), '.jpg'),
           ),
           fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(
@@ -1357,6 +1422,7 @@ class WelcomeSection extends StatelessWidget {
             ),
             child: Text(
               t('welcome').toUpperCase(),
+              textAlign: TextAlign.center,
               style: GoogleFonts.inter(
                 fontSize: 12,
                 fontWeight: FontWeight.bold,
@@ -1414,7 +1480,8 @@ class RoomsSection extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(
         horizontal: isMobile ? 24 : 80,
-        vertical: isMobile ? 60 : 100,
+        vertical: isMobile ? 20 : 30,
+        // vertical: isMobile ? 60 : 100,
       ),
       child: Column(
         children: [
@@ -1444,13 +1511,13 @@ class RoomsSection extends StatelessWidget {
   }
 
   Widget _buildMobileRooms(List images) {
-    List rooms = [t('family_room'), t('garden_room')];
+    List rooms = [t('single_room_hammock'), t('single_room_smart_tv')];
     List <String> room1Images = images.where((element) => element['id'].toString() == '1')
                       // 2. Expand the nested 'data' list to flatten the results
                       .expand((element) {
                         List dataList = element['data'] as List;
                         return dataList.map(
-                          (item) => item['image_url'].toString(),
+                          (item) => item['image_url'].toString().replaceAll(RegExp(r'\.[^.]*$'), '.jpg'),
                         );
                       })
                       .toList();
@@ -1459,41 +1526,41 @@ class RoomsSection extends StatelessWidget {
                       .expand((element) {
                         List dataList = element['data'] as List;
                         return dataList.map(
-                          (item) => item['image_url'].toString(),
+                          (item) => item['image_url'].toString().replaceAll(RegExp(r'\.[^.]*$'), '.jpg'),
                         );
                       })
                       .toList();
     return Column(
       children: [
         ModernRoomCard(
-          title: t('family_room'),
-          features: t('family_features'),
+          title: t('single_room_hammock'),
+          features: t('single_room_hammock_desc'),
           image: room1Images.isNotEmpty ? '${room1Images.first}':
               'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600',
           t: t,
-          onBookNowPressed: () => onBookNowPressed(roomName: t('family_room')),
+          onBookNowPressed: () => onBookNowPressed(roomName: t('single_room_hammock')),
         ),
         const SizedBox(height: 24),
         ModernRoomCard(
-          title: t('garden_room'),
-          features: t('garden_features'),
+          title: t('single_room_smart_tv'),
+          features: t('single_room_smart_tv_desc'),
           image: room2Images.isNotEmpty ? '${room2Images.first}':
               'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600',
           t: t,
-          onBookNowPressed: () => onBookNowPressed(roomName: t('garden_room')),
+          onBookNowPressed: () => onBookNowPressed(roomName: t('single_room_smart_tv')),
         ),
       ],
     );
   }
 
   Widget _buildDesktopRooms(List images) {
-    List rooms = [t('family_room'), t('garden_room')];
+    List rooms = [t('single_room_hammock'), t('single_room_smart_tv')];
     List <String> room1Images = images.where((element) => element['id'].toString() == '1')
                       // 2. Expand the nested 'data' list to flatten the results
                       .expand((element) {
                         List dataList = element['data'] as List;
                         return dataList.map(
-                          (item) => item['image_url'].toString(),
+                          (item) => item['image_url'].toString().replaceAll(RegExp(r'\.[^.]*$'), '.jpg'),
                         );
                       })
                       .toList();
@@ -1502,7 +1569,7 @@ class RoomsSection extends StatelessWidget {
                       .expand((element) {
                         List dataList = element['data'] as List;
                         return dataList.map(
-                          (item) => item['image_url'].toString(),
+                          (item) => item['image_url'].toString().replaceAll(RegExp(r'\.[^.]*$'), '.jpg'),
                         );
                       })
                       .toList();
@@ -1510,21 +1577,21 @@ class RoomsSection extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         ModernRoomCard(
-          title: t('family_room'),
-          features: t('family_features'),
+          title: t('single_room_hammock'),
+          features: t('single_room_hammock_desc'),
           image: room1Images.isNotEmpty ? '${room1Images.first}':
               'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600',
           t: t,
-          onBookNowPressed: () => onBookNowPressed(roomName: t('family_room')),
+          onBookNowPressed: () => onBookNowPressed(roomName: t('single_room_hammock')),
         ),
         const SizedBox(width: 32),
         ModernRoomCard(
-          title: t('garden_room'),
-          features: t('garden_features'),
+          title: t('single_room_smart_tv'),
+          features: t('single_room_smart_tv_desc'),
           image: room2Images.isNotEmpty ? '${room2Images.first}':
               'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600',
           t: t,
-          onBookNowPressed: () => onBookNowPressed(roomName: t('garden_room')),
+          onBookNowPressed: () => onBookNowPressed(roomName: t('single_room_smart_tv')),
         ),
       ],
     );
@@ -1823,9 +1890,10 @@ class GallerySection extends StatelessWidget {
             itemCount: images.length,
             itemBuilder: (context, index) {
               return ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.network(images[index], fit: BoxFit.cover),
-              );
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.network(images[index], fit: BoxFit.cover),
+                )
+              ;
             },
           ),
           const SizedBox(height: 48),
