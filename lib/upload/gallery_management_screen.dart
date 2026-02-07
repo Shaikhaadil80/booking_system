@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -453,6 +452,7 @@ class _GalleryManagementScreenState extends State<GalleryManagementScreen> {
   @override
   Widget build(BuildContext context) {
     final filteredImages = _filteredImages;
+  final isMobile = MediaQuery.of(context).size.width < 768;
     
     return Scaffold(
       appBar: AppBar(
@@ -700,8 +700,8 @@ class _GalleryManagementScreenState extends State<GalleryManagementScreen> {
             Expanded(
               child: GridView.builder(
                 padding: const EdgeInsets.all(16),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: kIsWeb ? 5 : 2,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: isMobile ? 5 : 2,
                   crossAxisSpacing: 16,
                   mainAxisSpacing: 16,
                   childAspectRatio: 0.8,
@@ -790,41 +790,43 @@ class _GalleryManagementScreenState extends State<GalleryManagementScreen> {
                 Expanded(
                   child: ClipRRect(
                     borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
-                    child: CachedNetworkImage(
-                      imageUrl: imageUrl,
+                    child: Image.network(
+                    // child: CachedNetworkImage(
+                      // imageUrl: imageUrl,
+                      imageUrl,
                       fit: BoxFit.cover,
-                      placeholder: (context, url) => Container(
-                        color: Colors.grey[100],
-                        child: const Center(
-                          child: CircularProgressIndicator(
-                            strokeWidth: 2,
-                            valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFFF6B35)),
-                          ),
-                        ),
-                      ),
-                      errorWidget: (context, url, error) => Container(
-                        color: Colors.grey[100],
-                        child: const Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.broken_image,
-                                color: Colors.grey,
-                                size: 40,
-                              ),
-                              SizedBox(height: 8),
-                              Text(
-                                'Failed to load',
-                                style: TextStyle(
-                                  fontSize: 10,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                      // placeholder: (context, url) => Container(
+                      //   color: Colors.grey[100],
+                      //   child: const Center(
+                      //     child: CircularProgressIndicator(
+                      //       strokeWidth: 2,
+                      //       valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFFF6B35)),
+                      //     ),
+                      //   ),
+                      // ),
+                      // errorWidget: (context, url, error) => Container(
+                      //   color: Colors.grey[100],
+                      //   child: const Center(
+                      //     child: Column(
+                      //       mainAxisAlignment: MainAxisAlignment.center,
+                      //       children: [
+                      //         Icon(
+                      //           Icons.broken_image,
+                      //           color: Colors.grey,
+                      //           size: 40,
+                      //         ),
+                      //         SizedBox(height: 8),
+                      //         Text(
+                      //           'Failed to load',
+                      //           style: TextStyle(
+                      //             fontSize: 10,
+                      //             color: Colors.grey,
+                      //           ),
+                      //         ),
+                      //       ],
+                      //     ),
+                      //   ),
+                      // ),
                     ),
                   ),
                 ),
