@@ -701,7 +701,7 @@ class _GalleryManagementScreenState extends State<GalleryManagementScreen> {
               child: GridView.builder(
                 padding: const EdgeInsets.all(16),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: isMobile ? 5 : 2,
+                  crossAxisCount: isMobile ? 2 : 5,
                   crossAxisSpacing: 16,
                   mainAxisSpacing: 16,
                   childAspectRatio: 0.8,
