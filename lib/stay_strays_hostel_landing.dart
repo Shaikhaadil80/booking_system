@@ -1,7 +1,5 @@
-import 'dart:developer';
-
+import 'package:booking_system/upload/gallery_management_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -1868,13 +1866,24 @@ class GallerySection extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Text(
-            t('gallery'),
-            textAlign: TextAlign.center,
-            style: GoogleFonts.righteous(
-              fontSize: isMobile ? 32 : 48,
-              fontWeight: FontWeight.bold,
-              color: const Color(0xFF2C2C2C),
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => GalleryManagementScreen(
+                  ),
+                ),
+              );
+            },
+            child: Text(
+              t('gallery'),
+              textAlign: TextAlign.center,
+              style: GoogleFonts.righteous(
+                fontSize: isMobile ? 32 : 48,
+                fontWeight: FontWeight.bold,
+                color: const Color(0xFF2C2C2C),
+              ),
             ),
           ),
           const SizedBox(height: 56),
